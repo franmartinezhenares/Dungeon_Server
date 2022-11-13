@@ -1,5 +1,7 @@
 package com.liceu.dungeon_server.model;
 
+import com.liceu.dungeon_server.services.DoorService;
+
 public class Door implements RoomSide{
 
     private Room roomFrom;
@@ -34,14 +36,9 @@ public class Door implements RoomSide{
     public void open() { this.open = true; }
 
     @Override
-    public void enter(Player player) { }
-//
-//    private Room getOtherRoom (Room currentRoom) {
-//        if (roomFrom.getRoomID() == currentRoom.getRoomID()) {
-//            return roomTo;
-//        }
-//        return roomFrom;
-//    }
+    public void enter(Player player) {
+        DoorService.enter(player, this);
+    }
 
 
 }

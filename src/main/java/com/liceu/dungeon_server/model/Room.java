@@ -44,4 +44,8 @@ public class Room {
     public void setDirection(Maze.Directions direction, RoomSide roomSide) {
         this.directions.put(direction, roomSide);
     }
+
+    public RoomSide getDirection(Maze.Directions direction) {
+        return this.directions.get(direction);
+    }
 }

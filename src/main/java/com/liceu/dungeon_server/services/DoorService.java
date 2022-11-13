@@ -21,16 +21,17 @@ public class DoorService {
 
     public void open(Door door) { door.open(); }
 
-    public void enter(Player player, Door door) {
+    public static void enter(Player player, Door door) {
         if (!door.isOpen()) {
             door.open();
         }
         if (door.isOpen()) {
             Room goTo = getOtherRoom(player.getCurrentRoom(), door);
+            player.setCurrentRoom(goTo);
         }
     }
 
-    public Room getOtherRoom (Room currentRoom, Door door) {
+    public static Room getOtherRoom(Room currentRoom, Door door) {
         if(door.getRoomFrom().getRoomID() == currentRoom.getRoomID()) {
             return door.getRoomTo();
         }
