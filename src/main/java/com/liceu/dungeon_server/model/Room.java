@@ -40,4 +40,8 @@ public class Room {
     public void setDirections(Map<Maze.Directions, RoomSide> directions) {
         this.directions = directions;
     }
+
+    public void setDirection(Maze.Directions direction, RoomSide roomSide) {
+        this.directions.put(direction, roomSide);
+    }
 }

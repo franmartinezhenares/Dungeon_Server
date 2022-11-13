@@ -15,4 +15,12 @@ public class Maze {
     public void setRooms(Map<Integer, Room> rooms) {
         this.rooms = rooms;
     }
+
+    public void addRoom(int nRoom, Room room) {
+        this.rooms.put(nRoom, room);
+    }
+
+    public Room getRoomFromID(int roomID) {
+        return this.rooms.get(roomID);
+    }
 }
