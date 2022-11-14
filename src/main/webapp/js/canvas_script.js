@@ -1,6 +1,6 @@
 
 
-let canvas = document.getElementById("canvas");
+let canvas = document.getElementById("navigation_canvas");
 const ctx = canvas.getContext("2d");
 let scale = 2;
 
@@ -232,4 +232,4 @@ drawUI();
 // drawWall("up");
 // drawCoin();
 // drawKey();
-// drawPlayer();
+drawPlayer();

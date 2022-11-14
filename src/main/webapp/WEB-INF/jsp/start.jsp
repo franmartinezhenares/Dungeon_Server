@@ -1,7 +1,7 @@
 <%@ page isELIgnored="false" %>
 <%@ taglib uri ="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<style><%@include file="../css/styles.css"%></style>
+<style><%@include file="/css/styles.css"%></style>
 
 
 <!DOCTYPE html>
@@ -23,6 +23,14 @@
             <input type="submit" name="play" value="Play">
         </select>
     </form>
+
+    <%-- <script type="aplication/json">
+        {
+        "room": 1,
+        "keys": 0,
+        "coins": 4
+        }
+    </script> --%>
 
 </body>
 </html>
