@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @WebServlet("/start")
@@ -14,6 +15,10 @@ public class StartController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         // Inicio del juego, bienvenida, formulario de inicio (selección de mapa)
+
+        HttpSession session = req.getSession();
+        String selectedMaze = req.getParameter("maze_select");
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/index.jsp");
         dispatcher.forward(req, resp);
     }
