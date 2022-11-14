@@ -1,9 +1,11 @@
-package com.liceu.dungeon_server.services;
+package com.liceu.dungeon_server.utils;
 
 import com.liceu.dungeon_server.model.Door;
 import com.liceu.dungeon_server.model.Maze;
 import com.liceu.dungeon_server.model.Room;
 import com.liceu.dungeon_server.model.Wall;
+import com.liceu.dungeon_server.services.DoorService;
+import com.liceu.dungeon_server.services.RoomService;
 
 public class BuilderService {
 

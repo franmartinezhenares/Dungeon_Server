@@ -2,7 +2,7 @@ package com.liceu.dungeon_server.controllers;
 
 import com.liceu.dungeon_server.model.Maze;
 import com.liceu.dungeon_server.model.Player;
-import com.liceu.dungeon_server.services.GameService;
+import com.liceu.dungeon_server.utils.GameService;
 import com.liceu.dungeon_server.services.PlayerService;
 
 import javax.servlet.RequestDispatcher;

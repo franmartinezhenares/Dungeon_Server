@@ -84,15 +84,19 @@ function navigateDungeon(direction) {
     switch (moveTo) {
         case "up":
             console.log("Moving UP !!!")
+            window.location.assign("http://localhost:8080/nav?dir=N")
             break;
         case "down":
             console.log("Moving DOWN !!!")
+            window.location.assign("http://localhost:8080/nav?dir=S")
             break;
         case "left":
             console.log("Moving LEFT !!!")
+            window.location.assign("http://localhost:8080/nav?dir=E")
             break;
         case "right":
             console.log("Moving RIGHT !!!")
+            window.location.assign("http://localhost:8080/nav?dir=W")
             break;
         default:
             console.log("NOT A DIRECTION")
