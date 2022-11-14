@@ -7,19 +7,29 @@ import com.liceu.dungeon_server.model.RoomSide;
 
 public class GameService {
 
-    private static Maze createMaze() {
+    public static Maze createMaze(int mazeID) {
         BuilderService builderService = new BuilderService();
 
-        for (int i = 1; i <= 3 ; i++) {
-            builderService.buildRoom(i);
+        switch (mazeID) {
+            case 1:
+
+                for (int i = 1; i <= 3 ; i++) {
+                    builderService.buildRoom(i);
+                }
+
+                builderService.buildDoor(1, 2, Maze.Directions.WEST);
+                builderService.buildDoor(2, 3, Maze.Directions.WEST);
+
+                builderService.setExit(3);
+                break;
+
+            case 2:
+                System.out.println("No disponible");
         }
 
-        builderService.buildDoor(1, 2, Maze.Directions.WEST);
-        builderService.buildDoor(2, 3, Maze.Directions.WEST);
-
-        builderService.setExit(3);
 
         return builderService.getMaze();
+
     }
 
     private static void go(Player player, Maze.Directions direction) {
