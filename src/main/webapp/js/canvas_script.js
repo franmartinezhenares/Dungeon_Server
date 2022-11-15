@@ -231,9 +231,22 @@ function drawPlayer() {
     };
 }
 
+let room = JSON.parse(document.getElementById("myjson").textContent);
+
+console.log(room);
+
+function drawRoom(room) {
+if(room.walls.W === "Door") {
+console.log("true");
+} else {
+console.log("No true")
+}
+}
+
 drawUI();
 // drawDoor("down");
 // drawWall("up");
 // drawCoin();
 // drawKey();
 drawPlayer();
+drawRoom();

@@ -14,7 +14,7 @@
         <canvas id="navigation_canvas" width="640" height="360"></canvas>
     </div>
 
-    <script type="application/json">
+    <script type="application/json" id="myjson">
     ${myjson}
     </script>
 

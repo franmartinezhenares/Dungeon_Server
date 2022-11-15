@@ -42,10 +42,10 @@ public class GameService {
     public String getJsonInfo(Room room, Player player) {
         JSONObject root = new JSONObject();
         JSONObject roomInfo = new JSONObject();
-        roomInfo.put("N", room.getDirection(Maze.Directions.NORTH).getClass());
-//        roomInfo.put("S", room.getDirection(Maze.Directions.SOUTH).toString());
-//        roomInfo.put("E", room.getDirection(Maze.Directions.EAST).toString());
-//        roomInfo.put("W", room.getDirection(Maze.Directions.WEST).toString());
+        roomInfo.put("N", room.getDirection(Maze.Directions.NORTH).toString());
+        roomInfo.put("S", room.getDirection(Maze.Directions.SOUTH).toString());
+        roomInfo.put("E", room.getDirection(Maze.Directions.EAST).toString());
+        roomInfo.put("W", room.getDirection(Maze.Directions.WEST).toString());
         root.put("walls", roomInfo);
         JSONObject playerInfo = new JSONObject();
         playerInfo.put("currentRoom", player.getCurrentRoom().getRoomID());

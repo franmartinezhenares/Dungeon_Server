@@ -40,5 +40,8 @@ public class Door implements RoomSide{
         DoorService.enter(player, this);
     }
 
-
+    @Override
+    public String toString() {
+        return "Door";
+    }
 }

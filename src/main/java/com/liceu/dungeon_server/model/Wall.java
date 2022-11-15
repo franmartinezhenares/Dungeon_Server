@@ -5,4 +5,8 @@ public class Wall implements RoomSide{
     public void enter(Player player) {
         System.out.println("No se puede pasar a través de una pared");
     }
+
+    public String toString() {
+        return "Wall";
+    }
 }
