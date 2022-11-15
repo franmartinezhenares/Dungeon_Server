@@ -42,6 +42,10 @@ public class Door implements RoomSide{
 
     @Override
     public String toString() {
+        boolean type = this.open;
+        if(type) {
+            return "Corridor";
+        }
         return "Door";
     }
 }

@@ -10,6 +10,7 @@ import com.liceu.dungeon_server.services.RoomService;
 public class BuilderService {
 
     private Maze maze = new Maze();
+    DoorService doorService = new DoorService();
 
     public void buildRoom(int nRoom) {
         Room room = RoomService.createRoom(nRoom);
@@ -21,13 +22,17 @@ public class BuilderService {
     }
 
     public void buildDoor(int roomFrom, int roomTo, Maze.Directions direction) {
-        Door door = buildDoorInternal(roomFrom, roomTo, direction);
+        Door door = buildDoorInternal(roomFrom, roomTo, direction, false);
     }
 
-    private Door buildDoorInternal(int roomFrom, int roomTo, Maze.Directions direction) {
+    public void buildCorridor(int roomFrom, int roomTo, Maze.Directions direction) {
+        Door door = buildDoorInternal(roomFrom, roomTo, direction, true);
+    }
+
+    private Door buildDoorInternal(int roomFrom, int roomTo, Maze.Directions direction, boolean open) {
         Room room1 = maze.getRoomFromID(roomFrom);
         Room room2 = maze.getRoomFromID(roomTo);
-        Door door = DoorService.createDoor(room1, room2);
+        Door door = doorService.createDoor(room1, room2, open);
         room1.setDirection(direction, door);
         room2.setDirection(getOppositeDirection(direction), door);
         return door;

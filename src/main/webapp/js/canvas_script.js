@@ -231,16 +231,18 @@ function drawPlayer() {
     };
 }
 
-let room = JSON.parse(document.getElementById("myjson").textContent);
+
+let room = new Object();
+
+room = JSON.parse(document.getElementById("myjson").textContent);
 
 console.log(room);
 
 function drawRoom(room) {
-if(room.walls.W === "Door") {
-console.log("true");
-} else {
-console.log("No true")
-}
+    console.log(room.walls.N);
+    console.log(room.walls.S);
+    console.log(room.walls.E);
+    console.log(room.walls.W);
 }
 
 drawUI();
@@ -249,4 +251,4 @@ drawUI();
 // drawCoin();
 // drawKey();
 drawPlayer();
-drawRoom();
+drawRoom(room);
