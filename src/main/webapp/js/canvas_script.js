@@ -243,12 +243,36 @@ function drawRoom(room) {
     console.log(room.walls.S);
     console.log(room.walls.E);
     console.log(room.walls.W);
+    console.log(room.walls);
+
+    if(room.walls.N === "Wall") {
+        drawWall("up");
+    }
+    if(room.walls.N === "Door") {
+        drawDoor("up");
+    }
+    if(room.walls.S === "Wall") {
+        drawWall("down");
+    }
+    if(room.walls.S === "Door") {
+        drawDoor("down");
+    }
+    if(room.walls.E === "Wall") {
+        drawWall("right");
+    }
+    if(room.walls.E === "Door") {
+        drawDoor("right");
+    }
+    if(room.walls.W === "Wall") {
+        drawWall("left");
+    }
+    if(room.walls.W === "Door") {
+        drawDoor("left");
+    }
 }
 
 drawUI();
-// drawDoor("down");
-// drawWall("up");
 // drawCoin();
 // drawKey();
 drawPlayer();
-drawRoom(room);
+setInterval(drawRoom(room), 1000);

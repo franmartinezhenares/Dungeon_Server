@@ -18,8 +18,8 @@ public class GameService {
                     builderService.buildRoom(i);
                 }
 
-                builderService.buildCorridor(1, 2, Maze.Directions.WEST);
-                builderService.buildCorridor(2, 3, Maze.Directions.NORTH);
+                builderService.buildDoor(1, 2, Maze.Directions.WEST);
+                builderService.buildDoor(2, 3, Maze.Directions.NORTH);
 
                 builderService.setExit(3);
                 break;
