@@ -14,6 +14,16 @@
         <canvas id="navigation_canvas" width="640" height="360"></canvas>
     </div>
 
+    <script type="application/json">
+    ${myjson}
+    </script>
+
+    <%-- <script>
+        let dataScript = document.getElementById("mydata").textContext;
+        let data = JSON.parse(dataScript);
+        console.log(dta.walls.N);
+    </script> --%>
+
    <script src="/js/canvas_script.js"></script>
 
 </body>
