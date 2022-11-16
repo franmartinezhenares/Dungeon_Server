@@ -26,8 +26,8 @@ public class Maze {
         this.mazeID = mazeID;
     }
 
-    public void addRoom(int nRoom, Room room) {
-        this.rooms.put(nRoom, room);
+    public void addRoom(int roomID, Room room) {
+        this.rooms.put(roomID, room);
     }
 
     public Room getRoomFromID(int roomID) {

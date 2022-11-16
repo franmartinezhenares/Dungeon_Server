@@ -52,11 +52,25 @@ public class GameUtils {
         roomInfo.put("W", room.getDirection(Maze.Directions.WEST).toString());
         root.put("walls", roomInfo);
 
+        JSONObject roomItems = new JSONObject();
+
         if(room.getRoomItems() != null) {
-            for(Item item : room.getRoomItems()) {
-                roomInfo.put("Item", item.toString());
+
+            if(room.getRoomItems().size() >= 1) {
+                roomItems.put("Item1", room.getItem(0).toString());
             }
-            root.put("item", roomInfo);
+            if(room.getRoomItems().size() >= 2) {
+                roomItems.put("Item2", room.getItem(1).toString());
+            }
+            if(room.getRoomItems().size() >= 3) {
+                roomItems.put("Item3", room.getItem(2).toString());
+            }
+            if(room.getRoomItems().size() >= 4) {
+                roomItems.put("Item4", room.getItem(3).toString());
+            }
+
+            root.put("item", roomItems);
+
         }
 
         JSONObject playerInfo = new JSONObject();

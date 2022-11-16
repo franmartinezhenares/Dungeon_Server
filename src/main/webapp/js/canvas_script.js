@@ -267,10 +267,14 @@ function drawRoom(room) {
         drawDoor("left");
     }
 
-    if(room.item) {
-        if(room.item.Item === "bronzeKey") {
-                drawKey();
-            }
+//    if(room.item) {
+//
+//    }
+    if(room.item.Item1 === "bronzeKey") {
+                    drawKey();
+    }
+    if(room.item.Item1 === "Coin") {
+                    drawCoin();
     }
 
 }

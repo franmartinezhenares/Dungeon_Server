@@ -24,6 +24,11 @@ public class Room {
         return roomItems;
     }
 
+    public Item getItem(int pos) {
+        Item item = roomItems.get(pos);
+        return item;
+    }
+
     public void setRoomItems(List<Item> roomItems) {
         this.roomItems = roomItems;
     }
