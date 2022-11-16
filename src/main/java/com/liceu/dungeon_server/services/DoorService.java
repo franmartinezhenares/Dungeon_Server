@@ -23,7 +23,8 @@ public class DoorService {
 
     public static void enter(Player player, Door door) {
         if (!door.isOpen()) {
-            door.open();
+//            door.open();
+            System.out.println("Puerta cerrada");
         }
         if (door.isOpen()) {
             Room goTo = getOtherRoom(player.getCurrentRoom(), door);
@@ -35,6 +36,6 @@ public class DoorService {
         if(door.getRoomFrom().getRoomID() == currentRoom.getRoomID()) {
             return door.getRoomTo();
         }
-        return currentRoom;
+        return door.getRoomFrom();
     }
 }

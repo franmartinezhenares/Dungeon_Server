@@ -17,7 +17,7 @@ import java.io.IOException;
 
 @WebServlet("/nav")
 public class NavController extends HttpServlet {
-    GameUtils gameService = new GameUtils();
+    GameUtils gameUtils = new GameUtils();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String dir = req.getParameter("dir");
@@ -29,17 +29,16 @@ public class NavController extends HttpServlet {
 
         Room room = player.getCurrentRoom();
 
-        String roomJson = gameService.getJsonInfo(room, player);
+        String roomJson = gameUtils.getJsonInfo(room, player);
         req.setAttribute("currentRoom", roomJson);
 
-        System.out.println("dir" + dir);
+        System.out.println("dir: " + dir);
+
         if(dir != null) {
-            gameService.go(player, Maze.Directions.valueOf(dir));
+            gameUtils.go(player, Maze.Directions.valueOf(dir));
             room = player.getCurrentRoom();
-            roomJson = gameService.getJsonInfo(room, player);
+            roomJson = gameUtils.getJsonInfo(room, player);
             req.setAttribute("currentRoom", roomJson);
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
-            dispatcher.forward(req, resp);
         }
 
 

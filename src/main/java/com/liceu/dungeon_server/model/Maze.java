@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class Maze {
 
+    int mazeID;
+
     public enum Directions { NORTH, SOUTH, EAST, WEST;}
     Map<Integer, Room> rooms = new HashMap<>();
 
@@ -14,6 +16,14 @@ public class Maze {
 
     public void setRooms(Map<Integer, Room> rooms) {
         this.rooms = rooms;
+    }
+
+    public int getMazeID() {
+        return mazeID;
+    }
+
+    public void setMazeID(int mazeID) {
+        this.mazeID = mazeID;
     }
 
     public void addRoom(int nRoom, Room room) {

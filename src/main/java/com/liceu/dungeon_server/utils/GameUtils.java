@@ -8,7 +8,7 @@ import org.json.simple.JSONObject;
 
 public class GameUtils {
 
-    public static Maze createMaze(int mazeID) {
+    public Maze createMaze(int mazeID) {
         BuilderUtils builderUtils = new BuilderUtils();
 
         switch (mazeID) {
@@ -18,8 +18,8 @@ public class GameUtils {
                     builderUtils.buildRoom(i);
                 }
 
-                builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
-                builderUtils.buildDoor(2, 3, Maze.Directions.NORTH);
+                builderUtils.buildCorridor(1, 2, Maze.Directions.EAST);
+                builderUtils.buildDoor(2, 3, Maze.Directions.SOUTH);
 
                 builderUtils.setExit(3);
                 break;
