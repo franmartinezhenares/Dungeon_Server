@@ -1,3 +1,4 @@
+com\liceu\dungeon_server\model\Coin.class
 com\liceu\dungeon_server\services\DoorService.class
 com\liceu\dungeon_server\services\RoomService.class
 com\liceu\dungeon_server\model\Room.class

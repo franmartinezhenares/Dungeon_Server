@@ -22,6 +22,7 @@ public class GameUtils {
                 builderUtils.buildCorridor(1, 2, Maze.Directions.EAST);
                 builderUtils.buildDoor(2, 3, Maze.Directions.SOUTH);
                 builderUtils.putKeyInRoom(2, bronzeKey);
+                builderUtils.putCoinsInRoom(3, 2);
 
                 builderUtils.setExit(3);
 
@@ -51,8 +52,10 @@ public class GameUtils {
         roomInfo.put("W", room.getDirection(Maze.Directions.WEST).toString());
         root.put("walls", roomInfo);
 
-        if(room.getItem() != null) {
-            roomInfo.put("Item", room.getItem().toString());
+        if(room.getRoomItems() != null) {
+            for(Item item : room.getRoomItems()) {
+                roomInfo.put("Item", item.toString());
+            }
             root.put("item", roomInfo);
         }
 

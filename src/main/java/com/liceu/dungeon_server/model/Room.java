@@ -1,11 +1,14 @@
 package com.liceu.dungeon_server.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Room {
     private int roomID;
-    private Item item;
+
+    private List<Item> roomItems = new ArrayList<>();
     private boolean exit = false;
     private Map<Maze.Directions, RoomSide> directions = new HashMap<>();
 
@@ -17,12 +20,16 @@ public class Room {
         this.roomID = roomID;
     }
 
-    public Item getItem() {
-        return this.item;
+    public List<Item> getRoomItems() {
+        return roomItems;
+    }
+
+    public void setRoomItems(List<Item> roomItems) {
+        this.roomItems = roomItems;
     }
 
     public void setItem(Item item) {
-        this.item = item;
+        this.roomItems.add(item);
     }
 
     public boolean isExit() {
@@ -48,4 +55,5 @@ public class Room {
     public RoomSide getDirection(Maze.Directions direction) {
         return this.directions.get(direction);
     }
+
 }
