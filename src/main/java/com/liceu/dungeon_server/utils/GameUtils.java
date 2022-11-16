@@ -1,12 +1,12 @@
 package com.liceu.dungeon_server.utils;
 
-import com.liceu.dungeon_server.model.Maze;
-import com.liceu.dungeon_server.model.Player;
-import com.liceu.dungeon_server.model.Room;
-import com.liceu.dungeon_server.model.RoomSide;
+import com.liceu.dungeon_server.model.*;
+import com.liceu.dungeon_server.services.KeyService;
 import org.json.simple.JSONObject;
 
 public class GameUtils {
+
+    KeyService keyService = new KeyService();
 
     public Maze createMaze(int mazeID) {
         BuilderUtils builderUtils = new BuilderUtils();
@@ -17,11 +17,14 @@ public class GameUtils {
                 for (int i = 1; i <= 3 ; i++) {
                     builderUtils.buildRoom(i);
                 }
+                Key bronzeKey = keyService.createKey("bronzeKey");
 
                 builderUtils.buildCorridor(1, 2, Maze.Directions.EAST);
                 builderUtils.buildDoor(2, 3, Maze.Directions.SOUTH);
+                builderUtils.putKeyInRoom(2, bronzeKey);
 
                 builderUtils.setExit(3);
+
                 break;
 
             case 2:
@@ -46,6 +49,11 @@ public class GameUtils {
         roomInfo.put("S", room.getDirection(Maze.Directions.SOUTH).toString());
         roomInfo.put("E", room.getDirection(Maze.Directions.EAST).toString());
         roomInfo.put("W", room.getDirection(Maze.Directions.WEST).toString());
+
+        if(room.getItem() != null) {
+            roomInfo.put("Item", room.getItem().toString());
+        }
+
         root.put("walls", roomInfo);
         JSONObject playerInfo = new JSONObject();
         playerInfo.put("currentRoom", player.getCurrentRoom().getRoomID());

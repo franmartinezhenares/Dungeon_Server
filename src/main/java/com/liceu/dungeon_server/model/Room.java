@@ -18,7 +18,7 @@ public class Room {
     }
 
     public Item getItem() {
-        return item;
+        return this.item;
     }
 
     public void setItem(Item item) {

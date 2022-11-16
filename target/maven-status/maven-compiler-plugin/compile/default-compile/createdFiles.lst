@@ -11,6 +11,7 @@ com\liceu\dungeon_server\model\Wall.class
 com\liceu\dungeon_server\services\PlayerService.class
 com\liceu\dungeon_server\model\Maze.class
 com\liceu\dungeon_server\model\Door.class
+com\liceu\dungeon_server\services\KeyService.class
 com\liceu\dungeon_server\controllers\StartController.class
 com\liceu\dungeon_server\utils\GameUtils.class
 com\liceu\dungeon_server\DAO\DoorDAO.class

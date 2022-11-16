@@ -22,4 +22,9 @@ public class Key implements Item{
     public void setKeyList(List<Door> keyList) {
         this.keyList = keyList;
     }
+
+    @Override
+    public String toString() {
+        return this.keyName;
+    }
 }

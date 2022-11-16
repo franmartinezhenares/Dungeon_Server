@@ -1,9 +1,6 @@
 package com.liceu.dungeon_server.utils;
 
-import com.liceu.dungeon_server.model.Door;
-import com.liceu.dungeon_server.model.Maze;
-import com.liceu.dungeon_server.model.Room;
-import com.liceu.dungeon_server.model.Wall;
+import com.liceu.dungeon_server.model.*;
 import com.liceu.dungeon_server.services.DoorService;
 import com.liceu.dungeon_server.services.RoomService;
 
@@ -46,6 +43,12 @@ public class BuilderUtils {
             case EAST: return Maze.Directions.WEST;
         }
         throw new RuntimeException("Dirección no reconocida");
+    }
+
+    public void putKeyInRoom(int RoomID, Key key) {
+
+        Room room =maze.getRoomFromID(RoomID);
+        room.setItem(key);
     }
 
     public void setExit(int roomID) {
