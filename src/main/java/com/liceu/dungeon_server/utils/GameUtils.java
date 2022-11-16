@@ -49,12 +49,13 @@ public class GameUtils {
         roomInfo.put("S", room.getDirection(Maze.Directions.SOUTH).toString());
         roomInfo.put("E", room.getDirection(Maze.Directions.EAST).toString());
         roomInfo.put("W", room.getDirection(Maze.Directions.WEST).toString());
+        root.put("walls", roomInfo);
 
         if(room.getItem() != null) {
             roomInfo.put("Item", room.getItem().toString());
+            root.put("item", roomInfo);
         }
 
-        root.put("walls", roomInfo);
         JSONObject playerInfo = new JSONObject();
         playerInfo.put("currentRoom", player.getCurrentRoom().getRoomID());
 //        player.put("Inventory", "[...]");

@@ -266,6 +266,13 @@ function drawRoom(room) {
     if(room.walls.W === "Door") {
         drawDoor("left");
     }
+
+    if(room.item) {
+        if(room.item.Item === "bronzeKey") {
+                drawKey();
+            }
+    }
+
 }
 
 drawUI();
