@@ -22,7 +22,7 @@ public class GameUtils {
                 builderUtils.buildCorridor(1, 2, Maze.Directions.EAST);
                 builderUtils.buildDoor(2, 3, Maze.Directions.SOUTH);
                 builderUtils.putKeyInRoom(2, bronzeKey);
-                builderUtils.putCoinsInRoom(3, 2);
+                builderUtils.putCoinsInRoom(2);
 
                 builderUtils.setExit(3);
 
@@ -61,12 +61,6 @@ public class GameUtils {
             }
             if(room.getRoomItems().size() >= 2) {
                 roomItems.put("Item2", room.getItem(1).toString());
-            }
-            if(room.getRoomItems().size() >= 3) {
-                roomItems.put("Item3", room.getItem(2).toString());
-            }
-            if(room.getRoomItems().size() >= 4) {
-                roomItems.put("Item4", room.getItem(3).toString());
             }
 
             root.put("item", roomItems);

@@ -267,20 +267,21 @@ function drawRoom(room) {
         drawDoor("left");
     }
 
-//    if(room.item) {
-//
-//    }
     if(room.item.Item1 === "bronzeKey") {
                     drawKey();
     }
     if(room.item.Item1 === "Coin") {
                     drawCoin();
     }
+    if(room.item.Item2 === "bronzeKey") {
+                    drawKey();
+    }
+    if(room.item.Item2 === "Coin") {
+                    drawCoin();
+    }
 
 }
 
 drawUI();
-// drawCoin();
-// drawKey();
 drawPlayer();
 setInterval(drawRoom(room), 1000);

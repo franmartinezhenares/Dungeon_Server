@@ -51,12 +51,10 @@ public class BuilderUtils {
         room.setItem(key);
     }
 
-    public void putCoinsInRoom(int RoomID, int coinNumber) {
+    public void putCoinsInRoom(int RoomID) {
         Room room =maze.getRoomFromID(RoomID);
         Coin coin = new Coin();
-        for (int i = 0; i < coinNumber; i++) {
-            room.setItem(coin);
-        }
+        room.setItem(coin);
     }
 
     public void setExit(int roomID) {
