@@ -4,8 +4,7 @@ package com.liceu.dungeon_server.controllers;
 import com.liceu.dungeon_server.model.Maze;
 import com.liceu.dungeon_server.model.Player;
 import com.liceu.dungeon_server.model.Room;
-import com.liceu.dungeon_server.services.RoomService;
-import com.liceu.dungeon_server.utils.GameService;
+import com.liceu.dungeon_server.utils.GameUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +17,7 @@ import java.io.IOException;
 
 @WebServlet("/nav")
 public class NavController extends HttpServlet {
-    GameService gameService = new GameService();
+    GameUtils gameService = new GameUtils();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String dir = req.getParameter("dir");
@@ -31,8 +30,17 @@ public class NavController extends HttpServlet {
         Room room = player.getCurrentRoom();
 
         String roomJson = gameService.getJsonInfo(room, player);
-        req.setAttribute("myjson", roomJson);
-        System.out.println(roomJson);
+        req.setAttribute("currentRoom", roomJson);
+
+        System.out.println("dir" + dir);
+        if(dir != null) {
+            gameService.go(player, Maze.Directions.valueOf(dir));
+            room = player.getCurrentRoom();
+            roomJson = gameService.getJsonInfo(room, player);
+            req.setAttribute("currentRoom", roomJson);
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
+            dispatcher.forward(req, resp);
+        }
 
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");

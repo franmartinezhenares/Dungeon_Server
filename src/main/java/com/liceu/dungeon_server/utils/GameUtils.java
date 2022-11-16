@@ -6,22 +6,22 @@ import com.liceu.dungeon_server.model.Room;
 import com.liceu.dungeon_server.model.RoomSide;
 import org.json.simple.JSONObject;
 
-public class GameService {
+public class GameUtils {
 
     public static Maze createMaze(int mazeID) {
-        BuilderService builderService = new BuilderService();
+        BuilderUtils builderUtils = new BuilderUtils();
 
         switch (mazeID) {
             case 1:
 
                 for (int i = 1; i <= 3 ; i++) {
-                    builderService.buildRoom(i);
+                    builderUtils.buildRoom(i);
                 }
 
-                builderService.buildDoor(1, 2, Maze.Directions.WEST);
-                builderService.buildDoor(2, 3, Maze.Directions.NORTH);
+                builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
+                builderUtils.buildDoor(2, 3, Maze.Directions.NORTH);
 
-                builderService.setExit(3);
+                builderUtils.setExit(3);
                 break;
 
             case 2:
@@ -29,11 +29,11 @@ public class GameService {
         }
 
 
-        return builderService.getMaze();
+        return builderUtils.getMaze();
 
     }
 
-    private static void go(Player player, Maze.Directions direction) {
+    public void go(Player player, Maze.Directions direction) {
         Room room = player.getCurrentRoom();
         RoomSide roomSide = room.getDirection(direction);
         roomSide.enter(player);
@@ -59,4 +59,5 @@ public class GameService {
 
         return root.toJSONString();
     }
+
 }

@@ -7,7 +7,7 @@ import com.liceu.dungeon_server.model.Wall;
 import com.liceu.dungeon_server.services.DoorService;
 import com.liceu.dungeon_server.services.RoomService;
 
-public class BuilderService {
+public class BuilderUtils {
 
     private Maze maze = new Maze();
     DoorService doorService = new DoorService();

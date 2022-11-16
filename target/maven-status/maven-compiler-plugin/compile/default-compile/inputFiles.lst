@@ -5,14 +5,14 @@ C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dun
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\services\DoorService.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\services\MazeService.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\services\RoomService.java
-C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\utils\BuilderService.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\model\Key.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\controllers\StartController.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\model\Wall.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\services\PlayerService.java
-C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\utils\GameService.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\controllers\NavController.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\model\Maze.java
+C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\utils\GameUtils.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\DAO\DoorDAO.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\DAO\MySQLImpl\DoorDAOMySQL.java
 C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\model\Door.java
+C:\Users\G513\Desktop\DAW\Programacion\DungeonServer\src\main\java\com\liceu\dungeon_server\utils\BuilderUtils.java

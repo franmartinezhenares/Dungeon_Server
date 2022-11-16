@@ -84,19 +84,19 @@ function navigateDungeon(direction) {
     switch (moveTo) {
         case "up":
             console.log("Moving UP !!!")
-            window.location.assign("http://localhost:8080/nav?dir=N")
+            window.location.assign("http://localhost:8080/nav?dir=NORTH")
             break;
         case "down":
             console.log("Moving DOWN !!!")
-            window.location.assign("http://localhost:8080/nav?dir=S")
+            window.location.assign("http://localhost:8080/nav?dir=SOUTH")
             break;
         case "left":
             console.log("Moving LEFT !!!")
-            window.location.assign("http://localhost:8080/nav?dir=E")
+            window.location.assign("http://localhost:8080/nav?dir=WEST")
             break;
         case "right":
             console.log("Moving RIGHT !!!")
-            window.location.assign("http://localhost:8080/nav?dir=W")
+            window.location.assign("http://localhost:8080/nav?dir=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")
@@ -234,16 +234,13 @@ function drawPlayer() {
 
 let room = new Object();
 
-room = JSON.parse(document.getElementById("myjson").textContent);
-
-console.log(room);
+room = JSON.parse(document.getElementById("currentRoom").textContent);
 
 function drawRoom(room) {
-    console.log(room.walls.N);
-    console.log(room.walls.S);
-    console.log(room.walls.E);
-    console.log(room.walls.W);
-    console.log(room.walls);
+    console.log("North:" + room.walls.N);
+    console.log("South:" + room.walls.S);
+    console.log("East:" + room.walls.E);
+    console.log("West:" + room.walls.W);
 
     if(room.walls.N === "Wall") {
         drawWall("up");

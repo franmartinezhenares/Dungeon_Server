@@ -12,12 +12,12 @@ public class DoorService {
         door.setOpen(open);
         return door;
     }
-    public static Door createDoor(Room roomFrom, Room roomTo) {
-        Door door = new Door();
-        door.setRoomFrom(roomFrom);
-        door.setRoomTo(roomTo);
-        return door;
-    }
+//    public static Door createDoor(Room roomFrom, Room roomTo) {
+//        Door door = new Door();
+//        door.setRoomFrom(roomFrom);
+//        door.setRoomTo(roomTo);
+//        return door;
+//    }
 
     public void open(Door door) { door.open(); }
 

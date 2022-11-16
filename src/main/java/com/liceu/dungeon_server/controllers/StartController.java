@@ -2,7 +2,7 @@ package com.liceu.dungeon_server.controllers;
 
 import com.liceu.dungeon_server.model.Maze;
 import com.liceu.dungeon_server.model.Player;
-import com.liceu.dungeon_server.utils.GameService;
+import com.liceu.dungeon_server.utils.GameUtils;
 import com.liceu.dungeon_server.services.PlayerService;
 
 import javax.servlet.RequestDispatcher;
@@ -17,7 +17,7 @@ import java.io.IOException;
 @WebServlet("/start")
 public class StartController extends HttpServlet {
 
-    GameService gameService = new GameService();
+    GameUtils gameService = new GameUtils();
     PlayerService playerService = new PlayerService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
