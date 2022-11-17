@@ -4,6 +4,8 @@ import com.liceu.dungeon_server.services.DoorService;
 
 public class Door implements RoomSide{
 
+    DoorService doorService = new DoorService();
+
     private Room roomFrom;
     private Room roomTo;
     private boolean open = false;
@@ -37,8 +39,7 @@ public class Door implements RoomSide{
 
     @Override
     public String enter(Player player) {
-        DoorService.enter(player, this);
-        return "";
+        return doorService.enter(player, this);
     }
 
     @Override

@@ -20,14 +20,14 @@ function drawUI(coins, keys, message) {
 }
 
 function drawInventory(coins, keys) {
-    ctx.font = "30px Arial";
+    ctx.font = "30px Agency FB";
     ctx.fillStyle = "white";
     ctx.fillText("Coins: " + coins, 20, 70);
     ctx.fillText("Keys: " + keys, 20, 110);
 }
 
 function drawMessage(message) {
-    ctx.font = "30px Arial";
+    ctx.font = "30px Agency FB";
     ctx.fillStyle = "white";
     ctx.fillText(message, 20, 200);
 }

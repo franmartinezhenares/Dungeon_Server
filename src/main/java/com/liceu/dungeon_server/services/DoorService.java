@@ -21,16 +21,18 @@ public class DoorService {
 
     public void open(Door door) { door.open(); }
 
-    public static void enter(Player player, Door door) {
+    public String enter(Player player, Door door) {
+        String message = "";
         if (!door.isOpen()) {
 //            door.open();
-            String message = "Puerta cerrada";
+            message = "Puerta cerrada";
             System.out.println(message);
         }
         if (door.isOpen()) {
             Room goTo = getOtherRoom(player.getCurrentRoom(), door);
             player.setCurrentRoom(goTo);
         }
+        return message;
     }
 
     public static Room getOtherRoom(Room currentRoom, Door door) {
