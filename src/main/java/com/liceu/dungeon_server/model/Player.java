@@ -2,6 +2,7 @@ package com.liceu.dungeon_server.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Player {
     private Room currentRoom;
@@ -25,5 +26,15 @@ public class Player {
 
     public void addToInventory(Item item) {
         this.inventory.add(item);
+    }
+
+    public int getPlayerCoins() {
+        int total = 0;
+        for(Item i : this.inventory) {
+            if(Objects.equals(i.toString(), "Coin")) {
+                total++;
+            }
+        }
+        return total;
     }
 }

@@ -25,9 +25,15 @@ public class GetKeyController extends HttpServlet {
 
         if(room.hasKey()) {
             Key key = (Key)room.getKey();
-            player.addToInventory(key);
-            req.setAttribute("sessionPlayer", player);
-            room.removeKey();
+            int keyValue = key.getKeyValue();
+            int playerCoins = player.getPlayerCoins();
+            if(keyValue <= playerCoins) {
+                player.addToInventory(key);
+                req.setAttribute("sessionPlayer", player);
+                room.removeKey();
+            } else {
+                System.out.println("No tienes suficientes monedas");
+            }
         }
         String roomJson = gameUtils.getJsonInfo(room, player);
         req.setAttribute("currentRoom", roomJson);

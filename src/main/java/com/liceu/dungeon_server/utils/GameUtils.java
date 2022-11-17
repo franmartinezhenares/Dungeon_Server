@@ -21,8 +21,8 @@ public class GameUtils {
                 for (int i = 1; i <= 5 ; i++) {
                     builderUtils.buildRoom(i);
                 }
-                Key bronzeKey = keyService.createKey("bronzeKey");
-                Key silverKey = keyService.createKey("silverKey");
+                Key bronzeKey = keyService.createKey("bronzeKey", 1);
+                Key silverKey = keyService.createKey("silverKey", 2);
 
                 builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
                 builderUtils.buildCorridor(2, 3, Maze.Directions.NORTH);
@@ -77,17 +77,12 @@ public class GameUtils {
         playerInfo.put("currentRoom", player.getCurrentRoom().getRoomID());
         playerInfo.put("inventory", player.getInventory().toString());
 
-        int playerCoins = 0;
+        int playerCoins = player.getPlayerCoins();
         List<String> playerKeys = new ArrayList<>();
         for(Item i : player.getInventory()) {
-            if(Objects.equals(i.toString(), "Coin")) {
-                playerCoins++;
-            } else {
+            if(!Objects.equals(i.toString(), "Coin")) {
                 playerKeys.add(i.toString());
             }
-//            if(Objects.equals(i.toString(), "bronzeKey")) {
-//                playerKeys.add("bronzeKey");
-//            }
         }
 
         playerInfo.put("playerCoins", playerCoins);

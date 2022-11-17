@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Key implements Item{
     private String keyName;
+
+    private int keyValue;
     private List<Door> keyList = new ArrayList<>();
 
     public String getKeyName() {
@@ -13,6 +15,14 @@ public class Key implements Item{
 
     public void setKeyName(String keyName) {
         this.keyName = keyName;
+    }
+
+    public int getKeyValue() {
+        return keyValue;
+    }
+
+    public void setKeyValue(int keyValue) {
+        this.keyValue = keyValue;
     }
 
     public List<Door> getKeyList() {
