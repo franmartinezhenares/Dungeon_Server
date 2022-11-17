@@ -9,25 +9,23 @@ canvas.addEventListener("mousedown", function (event) {
   });
 
 
-function drawUI() {
+function drawUI(coins, keys) {
     const background = new Image();
     background.src = "/assets/game_background_test.png"
     background.onload = () => {
         ctx.drawImage(background, 0, 0);
-        drawInventory();
+        drawInventory(coins, keys);
     };
 }
 
-function drawInventory() {
-    // let scale = 2;
+function drawInventory(coins, keys) {
     ctx.font = "30px Arial";
     ctx.fillStyle = "white";
-    ctx.fillText("Coins: ", 20, 70);
-    ctx.fillText("Keys: ", 20, 110);
+    ctx.fillText("Coins: " + coins, 20, 70);
+    ctx.fillText("Keys: " + keys, 20, 110);
 }
 
 function clickHandler() {
-    // let scale = 2;
     const boundingRect = canvas.getBoundingClientRect();
     const posX = (Math.floor(event.clientX - boundingRect.left))/scale;
     const posY = (Math.floor(event.clientY - boundingRect.top))/scale;
@@ -233,9 +231,7 @@ function drawPlayer() {
     };
 }
 
-
 let room = new Object();
-
 room = JSON.parse(document.getElementById("currentRoom").textContent);
 
 function drawRoom(room) {
@@ -243,6 +239,9 @@ function drawRoom(room) {
     console.log("South:" + room.walls.S);
     console.log("East:" + room.walls.E);
     console.log("West:" + room.walls.W);
+
+    drawPlayer();
+    drawUI(room.player.playerCoins, room.player.playerKeys);
 
     if(room.walls.N === "Wall") {
         drawWall("up");
@@ -269,16 +268,16 @@ function drawRoom(room) {
         drawDoor("left");
     }
 
-    if(room.item.Key === "bronzeKey" || room.item.Key === "bronzeKey") {
+    if(room.item.Key === "bronzeKey" || room.item.Key === "silverKey") {
         drawKey();
     }
-    if(room.item.Coin === "Coin" || room.item.Coin === "Coin") {
+    if(room.item.Coin === "Coin") {
         drawCoin();
     }
 
 
 }
 
-drawUI();
-drawPlayer();
+//drawUI(999);
+//drawPlayer();
 setInterval(drawRoom(room), 1000);

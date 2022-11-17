@@ -4,6 +4,10 @@ import com.liceu.dungeon_server.model.*;
 import com.liceu.dungeon_server.services.KeyService;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class GameUtils {
 
     KeyService keyService = new KeyService();
@@ -14,17 +18,25 @@ public class GameUtils {
         switch (mazeID) {
             case 1:
 
-                for (int i = 1; i <= 3 ; i++) {
+                for (int i = 1; i <= 5 ; i++) {
                     builderUtils.buildRoom(i);
                 }
                 Key bronzeKey = keyService.createKey("bronzeKey");
+                Key silverKey = keyService.createKey("silverKey");
 
-                builderUtils.buildCorridor(1, 2, Maze.Directions.EAST);
-                builderUtils.buildDoor(2, 3, Maze.Directions.SOUTH);
-                builderUtils.putKeyInRoom(2, bronzeKey);
+                builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
+                builderUtils.buildCorridor(2, 3, Maze.Directions.NORTH);
+                builderUtils.buildCorridor(3, 4, Maze.Directions.EAST);
+                builderUtils.buildDoor(4, 5, Maze.Directions.EAST);
+
+                builderUtils.putKeyInRoom(4, bronzeKey);
+                builderUtils.putKeyInRoom(3, silverKey);
                 builderUtils.putCoinsInRoom(2);
+                builderUtils.putCoinsInRoom(3);
+                builderUtils.putCoinsInRoom(4);
 
-                builderUtils.setExit(3);
+
+                builderUtils.setExit(5);
 
                 break;
 
@@ -53,7 +65,6 @@ public class GameUtils {
         root.put("walls", roomInfo);
 
         JSONObject roomItems = new JSONObject();
-
         if(room.hasKey()) {
             roomItems.put("Key", room.getKey().toString());
         }
@@ -65,6 +76,22 @@ public class GameUtils {
         JSONObject playerInfo = new JSONObject();
         playerInfo.put("currentRoom", player.getCurrentRoom().getRoomID());
         playerInfo.put("inventory", player.getInventory().toString());
+
+        int playerCoins = 0;
+        List<String> playerKeys = new ArrayList<>();
+        for(Item i : player.getInventory()) {
+            if(Objects.equals(i.toString(), "Coin")) {
+                playerCoins++;
+            } else {
+                playerKeys.add(i.toString());
+            }
+//            if(Objects.equals(i.toString(), "bronzeKey")) {
+//                playerKeys.add("bronzeKey");
+//            }
+        }
+
+        playerInfo.put("playerCoins", playerCoins);
+        playerInfo.put("playerKeys", playerKeys);
 //        player.put("Inventory", "[...]");
         root.put("player", playerInfo);
 //        JSONArray inventory = new JSONArray();

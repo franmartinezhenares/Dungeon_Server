@@ -48,10 +48,8 @@ public class NavController extends HttpServlet {
                 dispatcher.forward(req, resp);
             }
             if(get.equals("key")) {
-                room = player.getCurrentRoom();
-                room.removeKey();
-                roomJson = gameUtils.getJsonInfo(room, player);
-                req.setAttribute("currentRoom", roomJson);
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/getkey");
+                dispatcher.forward(req, resp);
             }
         }
 
