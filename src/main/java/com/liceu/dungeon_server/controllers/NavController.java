@@ -1,6 +1,7 @@
 package com.liceu.dungeon_server.controllers;
 
 
+import com.liceu.dungeon_server.model.Coin;
 import com.liceu.dungeon_server.model.Maze;
 import com.liceu.dungeon_server.model.Player;
 import com.liceu.dungeon_server.model.Room;
@@ -26,7 +27,7 @@ public class NavController extends HttpServlet {
         HttpSession session = req.getSession();
 
         Player player = (Player) session.getAttribute("sessionPlayer");
-        Maze maze = (Maze) session.getAttribute("sessionMaze");
+//        Maze maze = (Maze) session.getAttribute("sessionMaze");
 
         Room room = player.getCurrentRoom();
 
@@ -42,8 +43,19 @@ public class NavController extends HttpServlet {
 
         if(get != null) {
             if(get.equals("coin")) {
+                Coin coin = new Coin();
+                player.addToInventory(coin);
+                req.setAttribute("sessionPlayer", player);
                 room = player.getCurrentRoom();
-
+                room.removeCoin();
+                roomJson = gameUtils.getJsonInfo(room, player);
+                req.setAttribute("currentRoom", roomJson);
+            }
+            if(get.equals("key")) {
+                room = player.getCurrentRoom();
+                room.removeKey();
+                roomJson = gameUtils.getJsonInfo(room, player);
+                req.setAttribute("currentRoom", roomJson);
             }
         }
 

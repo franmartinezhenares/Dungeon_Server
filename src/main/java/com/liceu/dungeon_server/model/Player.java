@@ -22,4 +22,8 @@ public class Player {
     public void setInventory(List<Item> inventory) {
         this.inventory = inventory;
     }
+
+    public void addToInventory(Item item) {
+        this.inventory.add(item);
+    }
 }

@@ -64,6 +64,7 @@ public class GameUtils {
 
         JSONObject playerInfo = new JSONObject();
         playerInfo.put("currentRoom", player.getCurrentRoom().getRoomID());
+        playerInfo.put("inventory", player.getInventory().toString());
 //        player.put("Inventory", "[...]");
         root.put("player", playerInfo);
 //        JSONArray inventory = new JSONArray();
