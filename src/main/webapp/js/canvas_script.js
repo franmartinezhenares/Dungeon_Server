@@ -108,15 +108,19 @@ function openDoor(direction) {
     switch (openDirection) {
         case "up":
             console.log("Open UP Direction Door")
+            window.location.assign("http://localhost:8080/nav?open=NORTH")
             break;
         case "down":
             console.log("Open DOWN Direction Door")
+            window.location.assign("http://localhost:8080/nav?open=SOUTH")
             break;
         case "left":
             console.log("Open LEFT Direction Door")
+            window.location.assign("http://localhost:8080/nav?open=WEST")
             break;
         case "right":
             console.log("Open RIGHT Direction Door")
+            window.location.assign("http://localhost:8080/nav?open=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")

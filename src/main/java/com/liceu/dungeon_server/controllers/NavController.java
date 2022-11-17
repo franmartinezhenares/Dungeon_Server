@@ -23,6 +23,7 @@ public class NavController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String dir = req.getParameter("dir");
         String get = req.getParameter("get");
+        String open = req.getParameter("open");
 
         HttpSession session = req.getSession();
 
@@ -51,6 +52,12 @@ public class NavController extends HttpServlet {
                 RequestDispatcher dispatcher = req.getRequestDispatcher("/getkey");
                 dispatcher.forward(req, resp);
             }
+        }
+
+        if(open != null) {
+
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/open");
+            dispatcher.forward(req, resp);
         }
 
 
