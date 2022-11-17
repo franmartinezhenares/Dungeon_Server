@@ -49,19 +49,20 @@ public class GameUtils {
 
     }
 
-    public void go(Player player, Maze.Directions direction) {
+    public String go(Player player, Maze.Directions direction) {
         Room room = player.getCurrentRoom();
         RoomSide roomSide = room.getDirection(direction);
-        roomSide.enter(player);
+        return roomSide.enter(player);
     }
 
-    public String getJsonInfo(Room room, Player player) {
+    public String getJsonInfo(Room room, Player player, String message) {
         JSONObject root = new JSONObject();
         JSONObject roomInfo = new JSONObject();
         roomInfo.put("N", room.getDirection(Maze.Directions.NORTH).toString());
         roomInfo.put("S", room.getDirection(Maze.Directions.SOUTH).toString());
         roomInfo.put("E", room.getDirection(Maze.Directions.EAST).toString());
         roomInfo.put("W", room.getDirection(Maze.Directions.WEST).toString());
+        roomInfo.put("Message", message);
         root.put("walls", roomInfo);
 
         JSONObject roomItems = new JSONObject();

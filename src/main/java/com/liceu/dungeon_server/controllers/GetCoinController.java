@@ -22,15 +22,17 @@ public class GetCoinController extends HttpServlet {
         HttpSession session = req.getSession();
         Player player = (Player) session.getAttribute("sessionPlayer");
         Room room = player.getCurrentRoom();
+        String message = "";
 
         if(room.hasCoin()) {
             Coin coin = new Coin();
             player.addToInventory(coin);
+            message = "Has conseguido una moneda";
             req.setAttribute("sessionPlayer", player);
             room.removeCoin();
         }
 
-        String roomJson = gameUtils.getJsonInfo(room, player);
+        String roomJson = gameUtils.getJsonInfo(room, player, message);
         req.setAttribute("currentRoom", roomJson);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");

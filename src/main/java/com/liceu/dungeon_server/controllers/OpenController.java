@@ -30,10 +30,9 @@ public class OpenController extends HttpServlet {
 
         door.open();
 
-
         req.setAttribute("sessionPlayer", player);
 
-        String roomJson = gameUtils.getJsonInfo(room, player);
+        String roomJson = gameUtils.getJsonInfo(room, player, "Has abierto");
         req.setAttribute("currentRoom", roomJson);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");

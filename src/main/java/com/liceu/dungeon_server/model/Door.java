@@ -36,8 +36,9 @@ public class Door implements RoomSide{
     public void open() { this.open = true; }
 
     @Override
-    public void enter(Player player) {
+    public String enter(Player player) {
         DoorService.enter(player, this);
+        return "";
     }
 
     @Override

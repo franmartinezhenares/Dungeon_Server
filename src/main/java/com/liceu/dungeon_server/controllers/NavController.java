@@ -32,13 +32,14 @@ public class NavController extends HttpServlet {
 
         Room room = player.getCurrentRoom();
 
-        String roomJson = gameUtils.getJsonInfo(room, player);
+        String roomJson = gameUtils.getJsonInfo(room, player,"");
         req.setAttribute("currentRoom", roomJson);
 
         if(dir != null) {
-            gameUtils.go(player, Maze.Directions.valueOf(dir));
+            String message = gameUtils.go(player, Maze.Directions.valueOf(dir));
+            req.setAttribute("message", message);
             room = player.getCurrentRoom();
-            roomJson = gameUtils.getJsonInfo(room, player);
+            roomJson = gameUtils.getJsonInfo(room, player, message);
             req.setAttribute("currentRoom", roomJson);
         }
 

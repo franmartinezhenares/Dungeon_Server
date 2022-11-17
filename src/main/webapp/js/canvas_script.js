@@ -9,12 +9,13 @@ canvas.addEventListener("mousedown", function (event) {
   });
 
 
-function drawUI(coins, keys) {
+function drawUI(coins, keys, message) {
     const background = new Image();
     background.src = "/assets/game_background_test.png"
     background.onload = () => {
         ctx.drawImage(background, 0, 0);
         drawInventory(coins, keys);
+        drawMessage(message);
     };
 }
 
@@ -23,6 +24,12 @@ function drawInventory(coins, keys) {
     ctx.fillStyle = "white";
     ctx.fillText("Coins: " + coins, 20, 70);
     ctx.fillText("Keys: " + keys, 20, 110);
+}
+
+function drawMessage(message) {
+    ctx.font = "30px Arial";
+    ctx.fillStyle = "white";
+    ctx.fillText(message, 20, 200);
 }
 
 function clickHandler() {
@@ -244,8 +251,10 @@ function drawRoom(room) {
     console.log("East:" + room.walls.E);
     console.log("West:" + room.walls.W);
 
+    let message = room.walls.Message;
+
     drawPlayer();
-    drawUI(room.player.playerCoins, room.player.playerKeys);
+    drawUI(room.player.playerCoins, room.player.playerKeys, message);
 
     if(room.walls.N === "Wall") {
         drawWall("up");

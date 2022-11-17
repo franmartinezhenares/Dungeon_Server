@@ -23,20 +23,24 @@ public class GetKeyController extends HttpServlet {
         Player player = (Player) session.getAttribute("sessionPlayer");
         Room room = player.getCurrentRoom();
 
+        String message = "";
+
         if(room.hasKey()) {
+
             Key key = (Key)room.getKey();
             int keyValue = key.getKeyValue();
             int playerCoins = player.getPlayerCoins();
             if(keyValue <= playerCoins) {
+                message = "Has conseguido la llave";
                 player.addToInventory(key);
                 player.removePlayerCoins(key.getKeyValue());
                 req.setAttribute("sessionPlayer", player);
                 room.removeKey();
             } else {
-                System.out.println("No tienes suficientes monedas");
+                message = "No tienes suficientes monedas";
             }
         }
-        String roomJson = gameUtils.getJsonInfo(room, player);
+        String roomJson = gameUtils.getJsonInfo(room, player, message);
         req.setAttribute("currentRoom", roomJson);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
