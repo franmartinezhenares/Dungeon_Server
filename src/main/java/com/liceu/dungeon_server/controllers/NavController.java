@@ -21,6 +21,7 @@ public class NavController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String dir = req.getParameter("dir");
+        String get = req.getParameter("get");
 
         HttpSession session = req.getSession();
 
@@ -32,13 +33,18 @@ public class NavController extends HttpServlet {
         String roomJson = gameUtils.getJsonInfo(room, player);
         req.setAttribute("currentRoom", roomJson);
 
-        System.out.println("dir: " + dir);
-
         if(dir != null) {
             gameUtils.go(player, Maze.Directions.valueOf(dir));
             room = player.getCurrentRoom();
             roomJson = gameUtils.getJsonInfo(room, player);
             req.setAttribute("currentRoom", roomJson);
+        }
+
+        if(get != null) {
+            if(get.equals("coin")) {
+                room = player.getCurrentRoom();
+
+            }
         }
 
 

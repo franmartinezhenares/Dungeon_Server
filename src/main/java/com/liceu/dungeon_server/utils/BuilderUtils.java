@@ -48,13 +48,13 @@ public class BuilderUtils {
     public void putKeyInRoom(int RoomID, Key key) {
 
         Room room =maze.getRoomFromID(RoomID);
-        room.setItem(key);
+        room.setKey(key);
     }
 
     public void putCoinsInRoom(int RoomID) {
         Room room =maze.getRoomFromID(RoomID);
         Coin coin = new Coin();
-        room.setItem(coin);
+        room.setCoin(coin);
     }
 
     public void setExit(int roomID) {

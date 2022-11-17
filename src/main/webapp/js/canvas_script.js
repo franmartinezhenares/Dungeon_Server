@@ -128,10 +128,12 @@ function openDoor(direction) {
 
 function getKey() {
     console.log("get Key!");
+    window.location.assign("http://localhost:8080/nav?get=key")
 }
 
 function getCoin() {
     console.log("get Coin!");
+    window.location.assign("http://localhost:8080/nav?get=coin")
 }
 
 function drawWall(position) {
@@ -267,18 +269,13 @@ function drawRoom(room) {
         drawDoor("left");
     }
 
-    if(room.item.Item1 === "bronzeKey") {
-                    drawKey();
+    if(room.item.Key === "bronzeKey" || room.item.Key === "bronzeKey") {
+        drawKey();
     }
-    if(room.item.Item1 === "Coin") {
-                    drawCoin();
+    if(room.item.Coin === "Coin" || room.item.Coin === "Coin") {
+        drawCoin();
     }
-    if(room.item.Item2 === "bronzeKey") {
-                    drawKey();
-    }
-    if(room.item.Item2 === "Coin") {
-                    drawCoin();
-    }
+
 
 }
 

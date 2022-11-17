@@ -8,7 +8,7 @@ import java.util.Map;
 public class Room {
     private int roomID;
 
-    private List<Item> roomItems = new ArrayList<>();
+    private Item[] roomItems = {null, null};
     private boolean exit = false;
     private Map<Maze.Directions, RoomSide> directions = new HashMap<>();
 
@@ -20,22 +20,60 @@ public class Room {
         this.roomID = roomID;
     }
 
-    public List<Item> getRoomItems() {
-        return roomItems;
+
+
+    public void setKey(Key key) {
+        this.roomItems[0] = key;
+    }
+    public boolean hasKey() {
+        return this.roomItems[0] != null;
+    }
+    public Item getKey() {
+        return this.roomItems[0];
+    }
+    public void removeKey() {
+        this.roomItems[0] = null;
     }
 
-    public Item getItem(int pos) {
-        Item item = roomItems.get(pos);
-        return item;
+    public void setCoin(Coin coin) {
+        this.roomItems[1] = coin;
+    }
+    public boolean hasCoin() {
+        return this.roomItems[1] != null;
+    }
+    public Item getCoin() {
+        return this.roomItems[1];
     }
 
-    public void setRoomItems(List<Item> roomItems) {
-        this.roomItems = roomItems;
+    public void removeCoin() {
+        this.roomItems[1] = null;
     }
 
-    public void setItem(Item item) {
-        this.roomItems.add(item);
-    }
+//    public List<Item> getRoomItems() {
+//        return roomItems;
+//    }
+//
+//    public Item getItem(int pos) {
+//        Item item = roomItems.get(pos);
+//        return item;
+//    }
+//
+//    public Item getItem(String name) {
+//        Item item = roomItems.get(name);
+//        return item;
+//    }
+//
+//    public void setRoomItems(List<Item> roomItems) {
+//        this.roomItems = roomItems;
+//    }
+//
+//    public void setItem(Item item) {
+//        this.roomItems.add(item);
+//    }
+//
+//    public void removeItem(Item item) {
+//        this.roomItems.remove(item);
+//    }
 
     public boolean isExit() {
         return exit;

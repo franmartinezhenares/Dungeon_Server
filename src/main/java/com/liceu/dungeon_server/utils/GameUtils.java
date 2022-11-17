@@ -54,18 +54,13 @@ public class GameUtils {
 
         JSONObject roomItems = new JSONObject();
 
-        if(room.getRoomItems() != null) {
-
-            if(room.getRoomItems().size() >= 1) {
-                roomItems.put("Item1", room.getItem(0).toString());
-            }
-            if(room.getRoomItems().size() >= 2) {
-                roomItems.put("Item2", room.getItem(1).toString());
-            }
-
-            root.put("item", roomItems);
-
+        if(room.hasKey()) {
+            roomItems.put("Key", room.getKey().toString());
         }
+        if(room.hasCoin()) {
+            roomItems.put("Coin", room.getCoin().toString());
+        }
+        root.put("item", roomItems);
 
         JSONObject playerInfo = new JSONObject();
         playerInfo.put("currentRoom", player.getCurrentRoom().getRoomID());
