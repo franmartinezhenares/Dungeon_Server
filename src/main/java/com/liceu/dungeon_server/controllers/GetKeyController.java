@@ -33,7 +33,9 @@ public class GetKeyController extends HttpServlet {
             if(keyValue <= playerCoins) {
                 message = "Has conseguido la llave";
                 player.addToInventory(key);
-                player.removePlayerCoins(key.getKeyValue());
+                for (int i = 0; i < key.getKeyValue() ; i++) {
+                    player.removePlayerCoins();
+                }
                 req.setAttribute("sessionPlayer", player);
                 room.removeKey();
             } else {

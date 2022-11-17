@@ -38,13 +38,11 @@ public class Player {
         return total;
     }
 
-    public void removePlayerCoins(int num) {
-
-        for (int i = 0; i < num; i++) {
-            for(Item item : this.inventory) {
-                if(Objects.equals(item.toString(), "Coin")) {
-                    this.inventory.remove(item);
-                }
+    public void removePlayerCoins() {
+        for(Item item : this.inventory) {
+            if(item instanceof Coin) {
+                this.inventory.remove(item);
+                return;
             }
         }
     }
