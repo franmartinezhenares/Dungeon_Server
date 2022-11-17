@@ -53,7 +53,7 @@ function drawInventory(coins, keys) {
 function drawMessage(message) {
     ctx.font = "30px Agency FB";
     ctx.fillStyle = "white";
-    ctx.fillText(message, 20, 200);
+    ctx.fillText(message, 20, 270);
 }
 
 function clickHandler() {

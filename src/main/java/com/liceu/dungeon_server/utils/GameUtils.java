@@ -18,25 +18,31 @@ public class GameUtils {
         switch (mazeID) {
             case 1:
 
-                for (int i = 1; i <= 5 ; i++) {
+                for (int i = 1; i <= 6 ; i++) {
                     builderUtils.buildRoom(i);
                 }
                 Key bronzeKey = keyService.createKey("bronzeKey", 1);
                 Key silverKey = keyService.createKey("silverKey", 2);
+                Key goldKey = keyService.createKey("goldKey", 2);
 
                 builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
                 builderUtils.buildDoor(2, 3, Maze.Directions.WEST, bronzeKey);
                 builderUtils.buildCorridor(3, 4, Maze.Directions.WEST);
                 builderUtils.buildDoor(4, 5, Maze.Directions.WEST, silverKey);
+                builderUtils.buildDoor(5, 6, Maze.Directions.WEST, goldKey);
 
                 builderUtils.putKeyInRoom(2, bronzeKey);
                 builderUtils.putKeyInRoom(4, silverKey);
+                builderUtils.putKeyInRoom(5, goldKey);
                 builderUtils.putCoinInRoom(1);
                 builderUtils.putCoinInRoom(2);
                 builderUtils.putCoinInRoom(3);
+                builderUtils.putCoinInRoom(4);
+                builderUtils.putCoinInRoom(5);
 
 
-                builderUtils.setExit(5);
+
+                builderUtils.setExit(6);
 
                 break;
 
