@@ -43,13 +43,9 @@ public class NavController extends HttpServlet {
 
         if(get != null) {
             if(get.equals("coin")) {
-                Coin coin = new Coin();
-                player.addToInventory(coin);
-                req.setAttribute("sessionPlayer", player);
-                room = player.getCurrentRoom();
-                room.removeCoin();
-                roomJson = gameUtils.getJsonInfo(room, player);
-                req.setAttribute("currentRoom", roomJson);
+
+                RequestDispatcher dispatcher = req.getRequestDispatcher("/getcoin");
+                dispatcher.forward(req, resp);
             }
             if(get.equals("key")) {
                 room = player.getCurrentRoom();

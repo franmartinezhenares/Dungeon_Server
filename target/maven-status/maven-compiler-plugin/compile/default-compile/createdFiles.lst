@@ -20,3 +20,4 @@ com\liceu\dungeon_server\model\Player.class
 com\liceu\dungeon_server\services\MazeService.class
 com\liceu\dungeon_server\DAO\MySQLImpl\DoorDAOMySQL.class
 com\liceu\dungeon_server\utils\BuilderUtils.class
+com\liceu\dungeon_server\controllers\GetCoinController.class
