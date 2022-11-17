@@ -37,4 +37,23 @@ public class Player {
         }
         return total;
     }
+
+    public void removePlayerCoins(int num) {
+
+        for (int i = 0; i < inventory.size(); i++) {
+            if(Objects.equals(this.inventory.get(i).toString(), "Coin")) {
+                this.inventory.remove(i);
+                num--;
+                if(num == 0) {
+                    break;
+                }
+            }
+        }
+
+//        for (int i = 0; i < num; i++) {
+//            if(Objects.equals(this.inventory.get(i).toString(), "Coin")) {
+//                this.inventory.remove(i);
+//            }
+//        }
+    }
 }

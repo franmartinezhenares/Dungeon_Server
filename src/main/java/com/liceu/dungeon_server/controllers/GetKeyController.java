@@ -29,6 +29,7 @@ public class GetKeyController extends HttpServlet {
             int playerCoins = player.getPlayerCoins();
             if(keyValue <= playerCoins) {
                 player.addToInventory(key);
+                player.removePlayerCoins(key.getKeyValue());
                 req.setAttribute("sessionPlayer", player);
                 room.removeKey();
             } else {
