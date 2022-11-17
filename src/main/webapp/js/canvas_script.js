@@ -22,8 +22,32 @@ function drawUI(coins, keys, message) {
 function drawInventory(coins, keys) {
     ctx.font = "30px Agency FB";
     ctx.fillStyle = "white";
-    ctx.fillText("Coins: " + coins, 20, 70);
-    ctx.fillText("Keys: " + keys, 20, 110);
+    ctx.fillText("Coins: " + coins, 100, 50);
+
+    keys.forEach(element => {
+        if(element==="bronzeKey") {
+            const key = new Image();
+            key.src = "/assets/key_image.png"
+            key.onload = () => {
+            ctx.drawImage(key, 40, 140);
+            };
+        }
+        if(element==="silverKey") {
+            const key = new Image();
+            key.src = "/assets/key_image.png"
+            key.onload = () => {
+            ctx.drawImage(key, 120, 140);
+            };
+        }
+        if(element==="goldKey") {
+            const key = new Image();
+            key.src = "/assets/key_image.png"
+            key.onload = () => {
+            ctx.drawImage(key, 200, 140);
+            };
+        }
+    });
+
 }
 
 function drawMessage(message) {
