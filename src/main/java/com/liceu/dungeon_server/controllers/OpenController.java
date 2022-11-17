@@ -26,16 +26,21 @@ public class OpenController extends HttpServlet {
 
         String open = req.getParameter("open");
 
+        String message = "";
+
         Door door = (Door)room.getDirection(Maze.Directions.valueOf(open));
-//        Key key = keyService.getDoorKey(door, player.getInventory());
+
         if(keyService.getDoorKey(door, player.getInventory())) {
             door.open();
+            message = "Has abierto";
+        } else {
+            message = "No tienes la llave";
         }
-//        door.open();
+
 
         req.setAttribute("sessionPlayer", player);
 
-        String roomJson = gameUtils.getJsonInfo(room, player, "Has abierto");
+        String roomJson = gameUtils.getJsonInfo(room, player, message);
         req.setAttribute("currentRoom", roomJson);
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");

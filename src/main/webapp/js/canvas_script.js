@@ -305,7 +305,7 @@ function drawRoom(room) {
         drawDoor("left");
     }
 
-    if(room.item.Key === "bronzeKey" || room.item.Key === "silverKey") {
+    if(room.item.Key === "bronzeKey" || room.item.Key === "silverKey" || room.item.Key === "goldKey") {
         drawKey();
     }
     if(room.item.Coin === "Coin") {
