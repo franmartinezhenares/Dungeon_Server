@@ -89,19 +89,19 @@ function navigateDungeon(direction) {
     switch (moveTo) {
         case "up":
             console.log("Moving UP !!!")
-            window.location.assign("http://localhost:8080/nav?dir=NORTH")
+            window.location.assign("/nav?dir=NORTH")
             break;
         case "down":
             console.log("Moving DOWN !!!")
-            window.location.assign("http://localhost:8080/nav?dir=SOUTH")
+            window.location.assign("/nav?dir=SOUTH")
             break;
         case "left":
             console.log("Moving LEFT !!!")
-            window.location.assign("http://localhost:8080/nav?dir=WEST")
+            window.location.assign("/nav?dir=WEST")
             break;
         case "right":
             console.log("Moving RIGHT !!!")
-            window.location.assign("http://localhost:8080/nav?dir=EAST")
+            window.location.assign("/nav?dir=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")
@@ -115,19 +115,19 @@ function openDoor(direction) {
     switch (openDirection) {
         case "up":
             console.log("Open UP Direction Door")
-            window.location.assign("http://localhost:8080/nav?open=NORTH")
+            window.location.assign("/nav?open=NORTH")
             break;
         case "down":
             console.log("Open DOWN Direction Door")
-            window.location.assign("http://localhost:8080/nav?open=SOUTH")
+            window.location.assign("/nav?open=SOUTH")
             break;
         case "left":
             console.log("Open LEFT Direction Door")
-            window.location.assign("http://localhost:8080/nav?open=WEST")
+            window.location.assign("/nav?open=WEST")
             break;
         case "right":
             console.log("Open RIGHT Direction Door")
-            window.location.assign("http://localhost:8080/nav?open=EAST")
+            window.location.assign("/nav?open=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")
@@ -137,12 +137,12 @@ function openDoor(direction) {
 
 function getKey() {
     console.log("get Key!");
-    window.location.assign("http://localhost:8080/nav?get=key")
+    window.location.assign("/nav?get=key")
 }
 
 function getCoin() {
     console.log("get Coin!");
-    window.location.assign("http://localhost:8080/nav?get=coin")
+    window.location.assign("/nav?get=coin")
 }
 
 function drawWall(position) {

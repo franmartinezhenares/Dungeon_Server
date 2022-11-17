@@ -22,6 +22,10 @@ public class BuilderUtils {
         Door door = buildDoorInternal(roomFrom, roomTo, direction, false);
     }
 
+    public void buildDoor(int roomFrom, int roomTo, Maze.Directions direction, Key key) {
+        Door door = buildDoorInternal(roomFrom, roomTo, direction, false, key);
+    }
+
     public void buildCorridor(int roomFrom, int roomTo, Maze.Directions direction) {
         Door door = buildDoorInternal(roomFrom, roomTo, direction, true);
     }
@@ -32,6 +36,16 @@ public class BuilderUtils {
         Door door = doorService.createDoor(room1, room2, open);
         room1.setDirection(direction, door);
         room2.setDirection(getOppositeDirection(direction), door);
+        return door;
+    }
+
+    private Door buildDoorInternal(int roomFrom, int roomTo, Maze.Directions direction, boolean open, Key key) {
+        Room room1 = maze.getRoomFromID(roomFrom);
+        Room room2 = maze.getRoomFromID(roomTo);
+        Door door = doorService.createDoor(room1, room2, open);
+        room1.setDirection(direction, door);
+        room2.setDirection(getOppositeDirection(direction), door);
+        key.setDoor(door);
         return door;
     }
 
@@ -51,7 +65,7 @@ public class BuilderUtils {
         room.setKey(key);
     }
 
-    public void putCoinsInRoom(int RoomID) {
+    public void putCoinInRoom(int RoomID) {
         Room room =maze.getRoomFromID(RoomID);
         Coin coin = new Coin();
         room.setCoin(coin);

@@ -1,6 +1,7 @@
 package com.liceu.dungeon_server.services;
 
 import com.liceu.dungeon_server.model.Door;
+import com.liceu.dungeon_server.model.Key;
 import com.liceu.dungeon_server.model.Player;
 import com.liceu.dungeon_server.model.Room;
 
@@ -12,12 +13,14 @@ public class DoorService {
         door.setOpen(open);
         return door;
     }
-//    public static Door createDoor(Room roomFrom, Room roomTo) {
-//        Door door = new Door();
-//        door.setRoomFrom(roomFrom);
-//        door.setRoomTo(roomTo);
-//        return door;
-//    }
+
+    public Door createDoor(Room roomFrom, Room roomTo, Key key) {
+        Door door = new Door();
+        door.setRoomFrom(roomFrom);
+        door.setRoomTo(roomTo);
+        key.setDoor(door);
+        return door;
+    }
 
     public void open(Door door) { door.open(); }
 

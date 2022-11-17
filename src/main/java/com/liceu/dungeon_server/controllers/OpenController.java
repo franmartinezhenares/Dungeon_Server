@@ -1,9 +1,8 @@
 package com.liceu.dungeon_server.controllers;
 
-import com.liceu.dungeon_server.model.Door;
-import com.liceu.dungeon_server.model.Maze;
-import com.liceu.dungeon_server.model.Player;
-import com.liceu.dungeon_server.model.Room;
+import com.liceu.dungeon_server.model.*;
+import com.liceu.dungeon_server.services.KeyService;
+import com.liceu.dungeon_server.services.PlayerService;
 import com.liceu.dungeon_server.utils.GameUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -18,6 +17,7 @@ import java.io.IOException;
 @WebServlet("/open")
 public class OpenController extends HttpServlet {
     GameUtils gameUtils = new GameUtils();
+    KeyService keyService = new KeyService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -27,8 +27,11 @@ public class OpenController extends HttpServlet {
         String open = req.getParameter("open");
 
         Door door = (Door)room.getDirection(Maze.Directions.valueOf(open));
-
-        door.open();
+//        Key key = keyService.getDoorKey(door, player.getInventory());
+        if(keyService.getDoorKey(door, player.getInventory())) {
+            door.open();
+        }
+//        door.open();
 
         req.setAttribute("sessionPlayer", player);
 

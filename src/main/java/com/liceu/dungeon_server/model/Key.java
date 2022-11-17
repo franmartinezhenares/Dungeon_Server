@@ -25,6 +25,10 @@ public class Key implements Item{
         this.keyValue = keyValue;
     }
 
+    public void setDoor(Door door) {
+        this.keyList.add(door);
+    }
+
     public List<Door> getKeyList() {
         return keyList;
     }

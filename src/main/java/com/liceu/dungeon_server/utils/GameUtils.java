@@ -24,16 +24,16 @@ public class GameUtils {
                 Key bronzeKey = keyService.createKey("bronzeKey", 1);
                 Key silverKey = keyService.createKey("silverKey", 2);
 
-                builderUtils.buildDoor(1, 2, Maze.Directions.WEST);
-                builderUtils.buildDoor(1, 3, Maze.Directions.NORTH);
-                builderUtils.buildDoor(1, 4, Maze.Directions.SOUTH);
-                builderUtils.buildDoor(4, 5, Maze.Directions.EAST);
+                builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
+                builderUtils.buildDoor(2, 3, Maze.Directions.WEST, bronzeKey);
+                builderUtils.buildCorridor(3, 4, Maze.Directions.WEST);
+                builderUtils.buildDoor(4, 5, Maze.Directions.WEST, silverKey);
 
-                builderUtils.putKeyInRoom(4, bronzeKey);
-                builderUtils.putKeyInRoom(3, silverKey);
-                builderUtils.putCoinsInRoom(2);
-                builderUtils.putCoinsInRoom(3);
-                builderUtils.putCoinsInRoom(4);
+                builderUtils.putKeyInRoom(2, bronzeKey);
+                builderUtils.putKeyInRoom(4, silverKey);
+                builderUtils.putCoinInRoom(1);
+                builderUtils.putCoinInRoom(2);
+                builderUtils.putCoinInRoom(3);
 
 
                 builderUtils.setExit(5);
