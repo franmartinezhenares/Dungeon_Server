@@ -61,6 +61,20 @@ public class NavController extends HttpServlet {
             dispatcher.forward(req, resp);
         }
 
+        if(room.isExit()) {
+            System.out.println("Is EXIT!");
+            String message = "Has ganado!!";
+            req.setAttribute("message", message);
+            player.setWinner(true);
+            req.setAttribute("sessionPlayer", player);
+            roomJson = gameUtils.getJsonInfo(room, player, message);
+            req.setAttribute("currentRoom", roomJson);
+
+//            resp.sendRedirect("/nav");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
+            dispatcher.forward(req, resp);
+        }
+
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
         dispatcher.forward(req, resp);

@@ -47,7 +47,11 @@ public class GameUtils {
                 break;
 
             case 2:
-                System.out.println("No disponible");
+                for (int i = 1; i <= 2 ; i++) {
+                    builderUtils.buildRoom(i);
+                }
+                builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
+                builderUtils.setExit(2);
         }
 
 
@@ -94,13 +98,8 @@ public class GameUtils {
 
         playerInfo.put("playerCoins", playerCoins);
         playerInfo.put("playerKeys", playerKeys);
-//        player.put("Inventory", "[...]");
+        playerInfo.put("playerWinner", player.isWinner());
         root.put("player", playerInfo);
-//        JSONArray inventory = new JSONArray();
-//        inventory.add("llave");
-//        inventory.add("llave");
-//        inventory.add("llave");
-//        player.put("Inventory", inventory);
 
         return root.toJSONString();
     }

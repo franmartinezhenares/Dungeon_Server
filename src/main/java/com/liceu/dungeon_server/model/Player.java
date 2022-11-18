@@ -8,6 +8,8 @@ public class Player {
     private Room currentRoom;
     private List<Item> inventory = new ArrayList<>();
 
+    private boolean isWinner;
+
     public Room getCurrentRoom() {
         return currentRoom;
     }
@@ -45,5 +47,13 @@ public class Player {
                 return;
             }
         }
+    }
+
+    public boolean isWinner() {
+        return isWinner;
+    }
+
+    public void setWinner(boolean winner) {
+        isWinner = winner;
     }
 }
