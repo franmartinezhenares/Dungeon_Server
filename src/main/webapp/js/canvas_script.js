@@ -4,6 +4,9 @@ let canvas = document.getElementById("navigation_canvas");
 const ctx = canvas.getContext("2d");
 let scale = 2;
 
+let room = new Object();
+room = JSON.parse(document.getElementById("currentRoom").textContent);
+
 const background = new Image();
 background.src = "/assets/game_background_test.png"
 background.onload = () => {
@@ -66,47 +69,56 @@ function clickHandler() {
     const posY = (Math.floor(event.clientY - boundingRect.top))/scale;
     // console.log(posX + " / " +posY);
 
-    // Navigation
+    if(room.player.playerWinner) {
+    console.log("WINNER");
+    } else {
 
-    if(posX > 390 && posX < 530 && posY > 0 && posY < 40) {
-        navigateDungeon("up");
-    }
-    if(posX > 390 && posX < 530 && posY > 320 && posY < 360) {
-        navigateDungeon("down");
-    }
-    if(posX > 280 && posX < 320 && posY > 110 && posY < 250) {
-        navigateDungeon("left");
-    }
-    if(posX > 600 && posX < 640 && posY > 110 && posY < 250) {
-        navigateDungeon("right");
+        // Navigation
+
+        if(posX > 390 && posX < 530 && posY > 0 && posY < 40) {
+            navigateDungeon("up");
+        }
+        if(posX > 390 && posX < 530 && posY > 320 && posY < 360) {
+            navigateDungeon("down");
+        }
+        if(posX > 280 && posX < 320 && posY > 110 && posY < 250) {
+            navigateDungeon("left");
+        }
+        if(posX > 600 && posX < 640 && posY > 110 && posY < 250) {
+            navigateDungeon("right");
+        }
+
+        // Doors
+
+        if(posX > 440 && posX < 480 && posY > 60 && posY < 100) {
+            openDoor("up");
+        }
+        if(posX > 440 && posX < 480 && posY > 260 && posY < 300) {
+            openDoor("down");
+        }
+        if(posX > 340 && posX < 380 && posY > 160 && posY < 200) {
+            openDoor("left");
+        }
+        if(posX > 540 && posX < 580 && posY > 160 && posY < 200) {
+            openDoor("right");
+        }
+
+        // Key
+
+        if(posX > 380 && posX < 415 && posY > 100 && posY < 135) {
+            getKey();
+        }
+
+        // Coin
+
+        if(posX > 500 && posX < 535 && posY > 100 && posY < 135) {
+            getCoin();
+        }
     }
 
-    // Doors
 
-    if(posX > 440 && posX < 480 && posY > 60 && posY < 100) {
-        openDoor("up");
-    }
-    if(posX > 440 && posX < 480 && posY > 260 && posY < 300) {
-        openDoor("down");
-    }
-    if(posX > 340 && posX < 380 && posY > 160 && posY < 200) {
-        openDoor("left");
-    }
-    if(posX > 540 && posX < 580 && posY > 160 && posY < 200) {
-        openDoor("right");
-    }
 
-    // Key
 
-    if(posX > 380 && posX < 415 && posY > 100 && posY < 135) {
-        getKey();
-    }
-
-    // Coin
-
-    if(posX > 500 && posX < 535 && posY > 100 && posY < 135) {
-        getCoin();
-    }
 
 
 }
@@ -279,8 +291,6 @@ function drawPlayer() {
 //    requestAnimationFrame(animatePlayer);
 //};
 
-let room = new Object();
-room = JSON.parse(document.getElementById("currentRoom").textContent);
 
 function drawRoom(room) {
     console.log("North:" + room.walls.N);
