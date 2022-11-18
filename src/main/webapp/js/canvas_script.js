@@ -70,7 +70,7 @@ function clickHandler() {
     // console.log(posX + " / " +posY);
 
     if(room.player.playerWinner) {
-    console.log("WINNER");
+        window.location.assign("/endform");
     } else {
 
         // Navigation
@@ -115,12 +115,6 @@ function clickHandler() {
             getCoin();
         }
     }
-
-
-
-
-
-
 }
 
 function navigateDungeon(direction) {
@@ -155,19 +149,19 @@ function openDoor(direction) {
     switch (openDirection) {
         case "up":
             console.log("Open UP Direction Door")
-            window.location.assign("/nav?open=NORTH")
+            window.location.assign("/open?dir=NORTH")
             break;
         case "down":
             console.log("Open DOWN Direction Door")
-            window.location.assign("/nav?open=SOUTH")
+            window.location.assign("/open?dir=SOUTH")
             break;
         case "left":
             console.log("Open LEFT Direction Door")
-            window.location.assign("/nav?open=WEST")
+            window.location.assign("/open?dir=WEST")
             break;
         case "right":
             console.log("Open RIGHT Direction Door")
-            window.location.assign("/nav?open=EAST")
+            window.location.assign("/open?dir=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")
@@ -177,12 +171,12 @@ function openDoor(direction) {
 
 function getKey() {
     console.log("get Key!");
-    window.location.assign("/nav?get=key")
+    window.location.assign("/getkey")
 }
 
 function getCoin() {
     console.log("get Coin!");
-    window.location.assign("/nav?get=coin")
+    window.location.assign("/getcoin")
 }
 
 function drawWall(position) {

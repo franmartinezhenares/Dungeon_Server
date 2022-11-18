@@ -22,13 +22,10 @@ public class NavController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String dir = req.getParameter("dir");
-        String get = req.getParameter("get");
-        String open = req.getParameter("open");
 
         HttpSession session = req.getSession();
 
         Player player = (Player) session.getAttribute("sessionPlayer");
-//        Maze maze = (Maze) session.getAttribute("sessionMaze");
 
         Room room = player.getCurrentRoom();
 
@@ -43,24 +40,6 @@ public class NavController extends HttpServlet {
             req.setAttribute("currentRoom", roomJson);
         }
 
-        if(get != null) {
-            if(get.equals("coin")) {
-
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/getcoin");
-                dispatcher.forward(req, resp);
-            }
-            if(get.equals("key")) {
-                RequestDispatcher dispatcher = req.getRequestDispatcher("/getkey");
-                dispatcher.forward(req, resp);
-            }
-        }
-
-        if(open != null) {
-
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/open");
-            dispatcher.forward(req, resp);
-        }
-
         if(room.isExit()) {
             System.out.println("Is EXIT!");
             String message = "Has ganado!!";
@@ -70,7 +49,6 @@ public class NavController extends HttpServlet {
             roomJson = gameUtils.getJsonInfo(room, player, message);
             req.setAttribute("currentRoom", roomJson);
 
-//            resp.sendRedirect("/nav");
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
             dispatcher.forward(req, resp);
         }
@@ -82,7 +60,6 @@ public class NavController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
         dispatcher.forward(req, resp);

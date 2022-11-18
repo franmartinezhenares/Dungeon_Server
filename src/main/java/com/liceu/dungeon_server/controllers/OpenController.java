@@ -24,11 +24,11 @@ public class OpenController extends HttpServlet {
         Player player = (Player) session.getAttribute("sessionPlayer");
         Room room = player.getCurrentRoom();
 
-        String open = req.getParameter("open");
+        String dir = req.getParameter("dir");
 
         String message = "";
 
-        Door door = (Door)room.getDirection(Maze.Directions.valueOf(open));
+        Door door = (Door)room.getDirection(Maze.Directions.valueOf(dir));
 
         if(keyService.getDoorKey(door, player.getInventory())) {
             door.open();
