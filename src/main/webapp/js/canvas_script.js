@@ -4,19 +4,24 @@ let canvas = document.getElementById("navigation_canvas");
 const ctx = canvas.getContext("2d");
 let scale = 2;
 
+const background = new Image();
+background.src = "/assets/game_background_test.png"
+background.onload = () => {
+    ctx.drawImage(background, 0, 0);
+}
+
 canvas.addEventListener("mousedown", function (event) {
     clickHandler();
-  });
+});
 
 
 function drawUI(coins, keys, message) {
-    const background = new Image();
-    background.src = "/assets/game_background_test.png"
+const background = new Image();
+background.src = "/assets/game_background_test.png"
     background.onload = () => {
-        ctx.drawImage(background, 0, 0);
         drawInventory(coins, keys);
         drawMessage(message);
-    };
+    }
 }
 
 function drawInventory(coins, keys) {
@@ -47,7 +52,6 @@ function drawInventory(coins, keys) {
             };
         }
     });
-
 }
 
 function drawMessage(message) {
@@ -245,6 +249,7 @@ function drawDoor(position) {
 function drawCoin() {
     const coin = new Image();
     coin.src = "/assets/coin_image.png"
+    console.log("ejecutando");
     coin.onload = () => {
         ctx.drawImage(coin, 500, 100);
     };
@@ -266,6 +271,14 @@ function drawPlayer() {
     };
 }
 
+//function animatePlayer() {
+//    const player = new Image();
+//    player.src = "/assets/player_front.png"
+//    // ctx.clearRect(0, 0, 640, 320);
+//    ctx.drawImage(player, 0, 0, 32, 64, 445, 140, 32, 64);
+//    requestAnimationFrame(animatePlayer);
+//};
+
 let room = new Object();
 room = JSON.parse(document.getElementById("currentRoom").textContent);
 
@@ -278,6 +291,7 @@ function drawRoom(room) {
     let message = room.walls.Message;
 
     drawPlayer();
+//    animatePlayer();
     drawUI(room.player.playerCoins, room.player.playerKeys, message);
 
     if(room.walls.N === "Wall") {
@@ -315,6 +329,4 @@ function drawRoom(room) {
 
 }
 
-//drawUI(999);
-//drawPlayer();
 setInterval(drawRoom(room), 1000);
