@@ -24,7 +24,7 @@
             <tr>
                 <td class="table_value">${winner.getWinnerName()}</td>
                 <td class="table_value">${winner.getMazeSolved()}</td>
-                <td class="table_value">${winner.getTime()}</td>
+                <td class="table_value">${winner.getFormattedTime()}</td>
             </tr>
     </c:forEach>
 

@@ -22,11 +22,14 @@ public class WinnersController extends HttpServlet {
         HttpSession session = req.getSession();
 
         List<Winner> winnersList = winnerService.getAllWinners();
-        req.setAttribute("winnerslist", winnersList);
+
 
         for(Winner winner : winnersList) {
-            System.out.println("winner: " + winner);
+
         }
+
+        req.setAttribute("winnerslist", winnersList);
+
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/winners.jsp");
         dispatcher.forward(req, resp);

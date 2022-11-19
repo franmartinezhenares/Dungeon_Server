@@ -29,6 +29,10 @@ public class Winner implements Comparable<Winner>{
         return time;
     }
 
+    public String getFormattedTime() {
+        return winnerService.formatTime(time);
+    }
+
     public void setTime(long time) {
         this.time = time;
     }
