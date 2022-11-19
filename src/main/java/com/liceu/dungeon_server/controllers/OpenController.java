@@ -28,14 +28,19 @@ public class OpenController extends HttpServlet {
 
         String message = "";
 
-        Door door = (Door)room.getDirection(Maze.Directions.valueOf(dir));
+        RoomSide roomSide = room.getDirection(Maze.Directions.valueOf(dir));
 
-        if(keyService.getDoorKey(door, player.getInventory())) {
-            door.open();
-            message = "Has abierto";
-        } else {
-            message = "No tienes la llave";
+        if(roomSide instanceof Door) {
+            Door door = (Door) roomSide;
+            if(keyService.getDoorKey(door, player.getInventory())) {
+                door.open();
+                message = "Has abierto";
+            } else {
+                message = "No tienes la llave";
+            }
         }
+
+
 
 
         req.setAttribute("sessionPlayer", player);

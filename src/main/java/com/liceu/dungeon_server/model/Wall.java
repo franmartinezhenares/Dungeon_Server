@@ -6,6 +6,9 @@ public class Wall implements RoomSide{
         return "No se puede pasar a través de una pared";
     }
 
+    public String open(Player player) {
+        return "No se puede abrir un muro";
+    }
     public String toString() {
         return "Wall";
     }
