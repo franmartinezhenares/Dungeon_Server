@@ -4,6 +4,7 @@ import com.liceu.dungeon_server.DAO.WinnerDAO;
 import com.liceu.dungeon_server.model.Winner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class WinnerDAOMySQL implements WinnerDAO {
@@ -15,6 +16,7 @@ public class WinnerDAOMySQL implements WinnerDAO {
 
     @Override
     public List<Winner> getWinnersList() {
+        Collections.sort(winnersList);
         return winnersList;
     }
 }

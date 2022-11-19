@@ -2,7 +2,7 @@ package com.liceu.dungeon_server.model;
 
 import com.liceu.dungeon_server.services.WinnerService;
 
-public class Winner {
+public class Winner implements Comparable<Winner>{
     WinnerService winnerService = new WinnerService();
     private String winnerName;
     private int mazeSolved;
@@ -25,11 +25,22 @@ public class Winner {
         this.mazeSolved = mazeSolved;
     }
 
-    public String getTime() {
-        return winnerService.formatTime(time);
+    public long getTime() {
+        return time;
     }
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    @Override
+    public int compareTo(Winner o) {
+        if(o.getTime() > time) {
+            return -1;
+        } else if(o.getTime() > time){
+            return 0;
+        } else {
+            return 1;
+        }
     }
 }
