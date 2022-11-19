@@ -1,9 +1,12 @@
 package com.liceu.dungeon_server.model;
 
+import com.liceu.dungeon_server.services.WinnerService;
+
 public class Winner {
+    WinnerService winnerService = new WinnerService();
     private String winnerName;
     private int mazeSolved;
-    private String time;
+    private long time;
 
 
     public String getWinnerName() {
@@ -23,10 +26,10 @@ public class Winner {
     }
 
     public String getTime() {
-        return time;
+        return winnerService.formatTime(time);
     }
 
-    public void setTime(String time) {
+    public void setTime(long time) {
         this.time = time;
     }
 }

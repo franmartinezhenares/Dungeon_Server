@@ -10,7 +10,7 @@ import java.util.List;
 public class WinnerService {
     WinnerDAO winnerDAO = new WinnerDAOMySQL();
 
-    public void createWinner(String name, int mazeID, String time) {
+    public void createWinner(String name, int mazeID, long time) {
         Winner winner = new Winner();
         winner.setWinnerName(name);
         winner.setMazeSolved(mazeID);

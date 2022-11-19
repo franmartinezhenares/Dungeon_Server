@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 
 @WebServlet("/nav")
 public class NavController extends HttpServlet {
@@ -41,7 +42,14 @@ public class NavController extends HttpServlet {
         }
 
         if(room.isExit()) {
-            System.out.println("Is EXIT!");
+            long startTime = (long)session.getAttribute("startTime");
+            Date date = new Date();
+            long endTime = date.getTime();
+            long totalTime = endTime - startTime;
+
+            session.setAttribute("totalTime", totalTime);
+
+
             String message = "Has ganado!!";
             req.setAttribute("message", message);
             player.setWinner(true);

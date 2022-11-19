@@ -29,19 +29,16 @@ public class EndFormController extends HttpServlet {
         Player player = (Player) session.getAttribute("sessionPlayer");
         Maze maze = (Maze) session.getAttribute("sessionMaze");
 
-        long startTime = (long)session.getAttribute("startTime");
+
 
         String name = req.getParameter("player_name");
 
+        long totalTime = (long)session.getAttribute("totalTime");
 
-        Date date = new Date();
-        long endTime = date.getTime();
 
-        long totalTime = endTime - startTime;
+//        String timeString = winnerService.formatTime(totalTime);
 
-        String timeString = winnerService.formatTime(totalTime);
-
-        winnerService.createWinner(name, maze.getMazeID(), timeString);
+        winnerService.createWinner(name, maze.getMazeID(), totalTime);
 
 
         resp.sendRedirect("/winners");
