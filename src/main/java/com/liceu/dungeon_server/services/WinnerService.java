@@ -23,8 +23,8 @@ public class WinnerService {
     }
 
     public String formatTime(long timeInMs) {
-        int seconds = (int)Math.floor(timeInMs/1000);
         int minutes = (int)Math.floor(timeInMs/60000);
+        int seconds = (int)Math.floor((timeInMs/1000) - (minutes*60));
         String minutesStr = "" + minutes;
         String secondsStr = "" + seconds;
         if(minutes < 10) minutesStr = "0" + minutes;
