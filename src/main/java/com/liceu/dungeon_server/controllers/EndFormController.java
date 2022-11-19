@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 
 @WebServlet("/endform")
 public class EndFormController extends HttpServlet {
@@ -27,11 +28,20 @@ public class EndFormController extends HttpServlet {
         HttpSession session = req.getSession();
         Player player = (Player) session.getAttribute("sessionPlayer");
         Maze maze = (Maze) session.getAttribute("sessionMaze");
+
+        long startTime = (long)session.getAttribute("startTime");
+
         String name = req.getParameter("player_name");
 
-        System.out.println("winner name: " + name);
 
-        winnerService.createWinner(name, maze.getMazeID(), "Tiempo");
+        Date date = new Date();
+        long endTime = date.getTime();
+
+        long totalTime = endTime - startTime;
+
+        String timeString = winnerService.formatTime(totalTime);
+
+        winnerService.createWinner(name, maze.getMazeID(), timeString);
 
 
         resp.sendRedirect("/winners");

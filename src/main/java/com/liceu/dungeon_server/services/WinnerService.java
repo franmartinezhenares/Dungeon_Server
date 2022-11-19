@@ -22,6 +22,17 @@ public class WinnerService {
         return winnerDAO.getWinnersList();
     }
 
+    public String formatTime(long timeInMs) {
+        int seconds = (int)Math.floor(timeInMs/1000);
+        int minutes = (int)Math.floor(timeInMs/60000);
+        String minutesStr = "" + minutes;
+        String secondsStr = "" + seconds;
+        if(minutes < 10) minutesStr = "0" + minutes;
+        if(seconds < 10) secondsStr = "0" + seconds;
+
+        return minutesStr + "'" + secondsStr + '"';
+    }
+
 
 
 }

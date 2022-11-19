@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Date;
 
 @WebServlet("/start")
 public class StartController extends HttpServlet {
@@ -43,6 +44,10 @@ public class StartController extends HttpServlet {
 
         Maze maze =gameService.createMaze(mazeID);
         Player player = playerService.createPlayer(maze.getRoomFromID(1));
+
+        Date date = new Date();
+        long startMS = date.getTime();
+        session.setAttribute("startTime", startMS);
 
         session.setAttribute("sessionPlayer", player);
         session.setAttribute("sessionMaze", maze);
