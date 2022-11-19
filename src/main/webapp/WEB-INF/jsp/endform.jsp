@@ -6,11 +6,14 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <title>Navigation</title>
+    <title>End Form</title>
 </head>
 <body>
 
-    <h1>Pon tu nombre</h1>
+    <h1>Insert your name</h1>
+    <form method="get" action="/winners">
+        <input type="text" name="player_name">
+    </form>
 
 </body>
 </html>

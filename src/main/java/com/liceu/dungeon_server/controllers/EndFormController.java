@@ -1,6 +1,8 @@
 package com.liceu.dungeon_server.controllers;
 
+import com.liceu.dungeon_server.model.Maze;
 import com.liceu.dungeon_server.model.Player;
+import com.liceu.dungeon_server.services.WinnerService;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,6 +15,7 @@ import java.io.IOException;
 
 @WebServlet("/endform")
 public class EndFormController extends HttpServlet {
+    WinnerService winnerService = new WinnerService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/endform.jsp");
@@ -23,10 +26,17 @@ public class EndFormController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         Player player = (Player) session.getAttribute("sessionPlayer");
+        Maze maze = (Maze) session.getAttribute("sessionMaze");
+        String name = req.getParameter("player_name");
+
+        System.out.println("winner name: " + name);
+
+        winnerService.createWinner(name, maze.getMazeID(), "Tiempo");
 
 
 
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
+
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/winners.jsp");
         dispatcher.forward(req, resp);
     }
 }
