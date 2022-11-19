@@ -34,9 +34,8 @@ public class EndFormController extends HttpServlet {
         winnerService.createWinner(name, maze.getMazeID(), "Tiempo");
 
 
-
-
-        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/winners.jsp");
-        dispatcher.forward(req, resp);
+        resp.sendRedirect("/winners");
+//        RequestDispatcher dispatcher = req.getRequestDispatcher("/winners");
+//        dispatcher.forward(req, resp);
     }
 }

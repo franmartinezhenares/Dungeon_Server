@@ -11,7 +11,7 @@
 <body>
 
     <h1>Insert your name</h1>
-    <form method="get" action="/winners">
+    <form method="post" action="/endform">
         <input type="text" name="player_name">
         <input type="submit" value=Send>
     </form>

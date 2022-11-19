@@ -9,7 +9,7 @@ import java.util.List;
 public class WinnerDAOMySQL implements WinnerDAO {
     public static List<Winner> winnersList = new ArrayList<>();
     @Override
-    public void create(Winner winner) {
+    public void insert(Winner winner) {
         winnersList.add(winner);
     }
 

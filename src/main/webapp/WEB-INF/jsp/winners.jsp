@@ -22,9 +22,9 @@
 
     <c:forEach var="winner" items="${winnerslist}">
             <tr>
-                <td class="table_value">name</td>
-                <td class="table_value">maze</td>
-                <td class="table_value">time</td>
+                <td class="table_value">${winner.getWinnerName()}</td>
+                <td class="table_value">${winner.getMazeSolved()}</td>
+                <td class="table_value">${winner.getTime()}</td>
             </tr>
     </c:forEach>
 

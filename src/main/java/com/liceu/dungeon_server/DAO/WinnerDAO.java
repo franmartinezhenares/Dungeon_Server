@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface WinnerDAO {
 
-    public void create(Winner winner);
+    public void insert(Winner winner);
 
     public List<Winner> getWinnersList();
 }

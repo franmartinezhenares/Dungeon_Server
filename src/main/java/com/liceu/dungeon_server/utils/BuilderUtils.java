@@ -18,9 +18,9 @@ public class BuilderUtils {
         maze.addRoom(nRoom, room);
     }
 
-    public void buildDoor(int roomFrom, int roomTo, Maze.Directions direction) {
-        Door door = buildDoorInternal(roomFrom, roomTo, direction, false);
-    }
+//    public void buildDoor(int roomFrom, int roomTo, Maze.Directions direction) {
+//        Door door = buildDoorInternal(roomFrom, roomTo, direction, false);
+//    }
 
     public void buildDoor(int roomFrom, int roomTo, Maze.Directions direction, Key key) {
         Door door = buildDoorInternal(roomFrom, roomTo, direction, false, key);
@@ -75,6 +75,7 @@ public class BuilderUtils {
         this.maze.getRoomFromID(roomID).setExit(true);
     }
 
+    public void setMazeID(int mazeID) {this.maze.setMazeID(mazeID);}
     public Maze getMaze() {
         return this.maze;
     }

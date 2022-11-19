@@ -18,6 +18,8 @@ public class GameUtils {
         switch (mazeID) {
             case 1:
 
+                builderUtils.setMazeID(1);
+
                 for (int i = 1; i <= 6 ; i++) {
                     builderUtils.buildRoom(i);
                 }
@@ -40,13 +42,12 @@ public class GameUtils {
                 builderUtils.putCoinInRoom(4);
                 builderUtils.putCoinInRoom(5);
 
-
-
                 builderUtils.setExit(6);
 
                 break;
 
             case 2:
+                builderUtils.setMazeID(2);
                 for (int i = 1; i <= 2 ; i++) {
                     builderUtils.buildRoom(i);
                 }

@@ -15,7 +15,7 @@ public class WinnerService {
         winner.setWinnerName(name);
         winner.setMazeSolved(mazeID);
         winner.setTime(time);
-        winnerDAO.create(winner);
+        winnerDAO.insert(winner);
     }
 
     public List<Winner> getAllWinners() {
