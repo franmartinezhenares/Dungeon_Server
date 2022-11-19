@@ -1,26 +1,20 @@
-
+let room = new Object();
+room = JSON.parse(document.getElementById("currentRoom").textContent);
 
 let canvas = document.getElementById("navigation_canvas");
 const ctx = canvas.getContext("2d");
 let scale = 2;
 
-let room = new Object();
-room = JSON.parse(document.getElementById("currentRoom").textContent);
-
 const background = new Image();
-background.src = "/assets/game_background_test.png"
-background.onload = () => {
-    ctx.drawImage(background, 0, 0);
-}
+background.src = "/assets/game_background.jpg"
 
 canvas.addEventListener("mousedown", function (event) {
     clickHandler();
 });
 
-
 function drawUI(coins, keys, message) {
 const background = new Image();
-background.src = "/assets/game_background_test.png"
+background.src = "/assets/game_background.jpg"
     background.onload = () => {
         drawInventory(coins, keys);
         drawMessage(message);
@@ -255,7 +249,6 @@ function drawDoor(position) {
 function drawCoin() {
     const coin = new Image();
     coin.src = "/assets/coin_image.png"
-    console.log("ejecutando");
     coin.onload = () => {
         ctx.drawImage(coin, 500, 100);
     };
@@ -269,21 +262,47 @@ function drawKey() {
     };
 }
 
-function drawPlayer() {
-    const player = new Image();
-    player.src = "/assets/player_front.png"
-    player.onload = () => {
-        ctx.drawImage(player, 445, 145);
-    };
-}
+// function drawPlayer() {
+//     const player = new Image();
+//     player.src = "/assets/player_front.png"
+//     player.onload = () => {
+//         ctx.drawImage(player, 445, 145);
+//     };
+// }
 
-//function animatePlayer() {
-//    const player = new Image();
-//    player.src = "/assets/player_front.png"
-//    // ctx.clearRect(0, 0, 640, 320);
-//    ctx.drawImage(player, 0, 0, 32, 64, 445, 140, 32, 64);
-//    requestAnimationFrame(animatePlayer);
-//};
+const player = new Image();
+player.src = "/assets/player_spritesheet.png";
+
+const spriteWidth = 48;
+const spriteHeight = 72;
+let frameX = 0;
+let frameY = 0;
+let gameFrame = 0;
+let destinationX = 438;
+let destinationY = 138;
+
+
+function animatePlayer() {
+//   ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+//                        destinationX, destinationY, spriteWidth,spriteHeight);
+
+    if(gameFrame === 0) {
+        if(frameX < 2) frameX++;
+        else frameX = 0;
+    }
+
+    gameFrame++;
+    ctx.drawImage(background, 0, 0);
+    drawUI(room.player.playerCoins, room.player.playerKeys, room.walls.Message);
+    drawRoom(room);
+   ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+                        destinationX, destinationY, spriteWidth,spriteHeight);
+
+//   requestAnimationFrame(animatePlayer);
+
+
+
+};
 
 
 function drawRoom(room) {
@@ -292,11 +311,6 @@ function drawRoom(room) {
     console.log("East:" + room.walls.E);
     console.log("West:" + room.walls.W);
 
-    let message = room.walls.Message;
-
-    drawPlayer();
-//    animatePlayer();
-    drawUI(room.player.playerCoins, room.player.playerKeys, message);
 
     if(room.walls.N === "Wall") {
         drawWall("up");
@@ -333,4 +347,5 @@ function drawRoom(room) {
 
 }
 
-setInterval(drawRoom(room), 1000);
+setInterval(animatePlayer(), 500);
+
