@@ -12,19 +12,19 @@ canvas.addEventListener("mousedown", function (event) {
     clickHandler();
 });
 
-function drawUI(coins, keys, message) {
-const background = new Image();
-background.src = "/assets/game_background.jpg"
+function drawUI() {
     background.onload = () => {
-        drawInventory(coins, keys);
-        drawMessage(message);
+        ctx.drawImage(background, 0, 0);
+        drawRoom(room);
+        drawInventory(room.player.playerCoins, room.player.playerKeys);
+        drawMessage(room.walls.Message);
     }
 }
 
 function drawInventory(coins, keys) {
-    ctx.font = "30px Agency FB";
-    ctx.fillStyle = "white";
-    ctx.fillText("Coins: " + coins, 100, 50);
+    ctx.font = "36px Castellar";
+    ctx.fillStyle = "#ddd";
+    ctx.fillText("" + coins, 178, 52);
 
     keys.forEach(element => {
         if(element==="bronzeKey") {
@@ -52,9 +52,9 @@ function drawInventory(coins, keys) {
 }
 
 function drawMessage(message) {
-    ctx.font = "30px Agency FB";
-    ctx.fillStyle = "white";
-    ctx.fillText(message, 20, 270);
+    ctx.font = "12px Castellar";
+    ctx.fillStyle = "#ddd";
+    ctx.fillText(message, 20, 280);
 }
 
 function clickHandler() {
@@ -262,13 +262,6 @@ function drawKey() {
     };
 }
 
-// function drawPlayer() {
-//     const player = new Image();
-//     player.src = "/assets/player_front.png"
-//     player.onload = () => {
-//         ctx.drawImage(player, 445, 145);
-//     };
-// }
 
 const player = new Image();
 player.src = "/assets/player_spritesheet.png";
@@ -281,25 +274,33 @@ let gameFrame = 0;
 let destinationX = 438;
 let destinationY = 138;
 
+let destinationCounter = 1;
+
 
 function animatePlayer() {
 //   ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
 //                        destinationX, destinationY, spriteWidth,spriteHeight);
 
-    if(gameFrame === 0) {
+    if(gameFrame%100 === 0) {
         if(frameX < 2) frameX++;
         else frameX = 0;
     }
 
+    if(destinationCounter%15 === 0) {
+        destinationY++;
+    }
+
     gameFrame++;
-    ctx.drawImage(background, 0, 0);
-    drawUI(room.player.playerCoins, room.player.playerKeys, room.walls.Message);
-    drawRoom(room);
-   ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+    // destinationCounter++;
+
+    console.log(gameFrame);
+
+
+    // ctx.clearRect(destinationX, destinationY, spriteWidth, spriteHeight);
+    ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
                         destinationX, destinationY, spriteWidth,spriteHeight);
 
-//   requestAnimationFrame(animatePlayer);
-
+  requestAnimationFrame(animatePlayer);
 
 
 };
@@ -347,5 +348,8 @@ function drawRoom(room) {
 
 }
 
-setInterval(animatePlayer(), 500);
+animatePlayer();
 
+drawUI();
+
+// setInterval(drawUI, 1000);

@@ -24,10 +24,11 @@ body {
     width: 640px;
     height: 360px;
     transform: scale(2);
+    image-rendering: pixelated;
 }
 
 #canvas {
     border: 1px solid black;
     background-color: antiquewhite;
-    image-rendering: pixelated;
+
 }
