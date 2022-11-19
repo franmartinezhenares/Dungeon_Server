@@ -21,8 +21,12 @@ public class WinnersController extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        List<Winner> winnersList = winnerService.getWinnersList();
-        req.setAttribute("winnersList", winnersList);
+        List<Winner> winnersList = winnerService.getAllWinners();
+        req.setAttribute("winnerslist", winnersList);
+
+        for(Winner winner : winnersList) {
+            System.out.println("winner: " + winner);
+        }
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/winners.jsp");
         dispatcher.forward(req, resp);

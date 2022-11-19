@@ -13,6 +13,7 @@
     <h1>Insert your name</h1>
     <form method="get" action="/winners">
         <input type="text" name="player_name">
+        <input type="submit" value=Send>
     </form>
 
 </body>

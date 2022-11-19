@@ -3,6 +3,7 @@ com\liceu\dungeon_server\utils\BuilderUtils$1.class
 com\liceu\dungeon_server\model\Item.class
 com\liceu\dungeon_server\model\RoomSide.class
 com\liceu\dungeon_server\model\Key.class
+com\liceu\dungeon_server\DAO\WinnerDAO.class
 com\liceu\dungeon_server\controllers\EndFormController.class
 com\liceu\dungeon_server\controllers\GetKeyController.class
 com\liceu\dungeon_server\model\Maze$Directions.class
@@ -18,6 +19,7 @@ com\liceu\dungeon_server\model\Coin.class
 com\liceu\dungeon_server\services\DoorService.class
 com\liceu\dungeon_server\services\RoomService.class
 com\liceu\dungeon_server\controllers\NavController.class
+com\liceu\dungeon_server\DAO\MySQL\WinnerDAOMySQL.class
 com\liceu\dungeon_server\model\Winner.class
 com\liceu\dungeon_server\services\PlayerService.class
 com\liceu\dungeon_server\model\Maze.class
