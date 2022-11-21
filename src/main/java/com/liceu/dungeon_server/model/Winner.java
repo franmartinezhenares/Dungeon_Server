@@ -41,7 +41,7 @@ public class Winner implements Comparable<Winner>{
     public int compareTo(Winner o) {
         if(o.getTime() > time) {
             return -1;
-        } else if(o.getTime() > time){
+        } else if(o.getTime() == time){
             return 0;
         } else {
             return 1;

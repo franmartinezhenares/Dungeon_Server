@@ -32,12 +32,17 @@ public class OpenController extends HttpServlet {
 
         if(roomSide instanceof Door) {
             Door door = (Door) roomSide;
-            if(keyService.getDoorKey(door, player.getInventory())) {
-                door.open();
-                message = "You open the Door";
+            if(door.isOpen()) {
+                message = "There is a Corridor";
             } else {
-                message = "You don't have the Key";
+                if(keyService.getDoorKey(door, player.getInventory())) {
+                    door.open();
+                    message = "You open the Door";
+                } else {
+                    message = "You don't have the Key";
+                }
             }
+
         }
 
 

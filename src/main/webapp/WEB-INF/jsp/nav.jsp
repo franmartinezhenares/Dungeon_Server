@@ -18,12 +18,6 @@
     ${currentRoom}
     </script>
 
-    <%-- <script>
-        let dataScript = document.getElementById("mydata").textContext;
-        let data = JSON.parse(dataScript);
-        console.log(dta.walls.N);
-    </script> --%>
-
    <script src="/js/canvas_script.js"></script>
 
 </body>
