@@ -27,7 +27,7 @@ public class GetCoinController extends HttpServlet {
         if(room.hasCoin()) {
             Coin coin = new Coin();
             player.addToInventory(coin);
-            message = "Has conseguido una moneda";
+            message = "You got a Coin";
             req.setAttribute("sessionPlayer", player);
             room.removeCoin();
         }

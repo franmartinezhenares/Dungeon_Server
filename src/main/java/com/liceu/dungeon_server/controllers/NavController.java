@@ -50,7 +50,7 @@ public class NavController extends HttpServlet {
             session.setAttribute("totalTime", totalTime);
 
 
-            String message = "Has ganado!!";
+            String message = "You win!!";
             req.setAttribute("message", message);
             player.setWinner(true);
             req.setAttribute("sessionPlayer", player);

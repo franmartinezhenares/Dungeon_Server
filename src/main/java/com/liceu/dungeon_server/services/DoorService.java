@@ -28,7 +28,7 @@ public class DoorService {
         String message = "";
         if (!door.isOpen()) {
 //            door.open();
-            message = "Puerta cerrada";
+            message = "Closed Door";
             System.out.println(message);
         }
         if (door.isOpen()) {

@@ -34,9 +34,9 @@ public class OpenController extends HttpServlet {
             Door door = (Door) roomSide;
             if(keyService.getDoorKey(door, player.getInventory())) {
                 door.open();
-                message = "Has abierto";
+                message = "You open the Door";
             } else {
-                message = "No tienes la llave";
+                message = "You don't have the Key";
             }
         }
 

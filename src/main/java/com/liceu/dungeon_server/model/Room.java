@@ -49,31 +49,6 @@ public class Room {
         this.roomItems[1] = null;
     }
 
-//    public List<Item> getRoomItems() {
-//        return roomItems;
-//    }
-//
-//    public Item getItem(int pos) {
-//        Item item = roomItems.get(pos);
-//        return item;
-//    }
-//
-//    public Item getItem(String name) {
-//        Item item = roomItems.get(name);
-//        return item;
-//    }
-//
-//    public void setRoomItems(List<Item> roomItems) {
-//        this.roomItems = roomItems;
-//    }
-//
-//    public void setItem(Item item) {
-//        this.roomItems.add(item);
-//    }
-//
-//    public void removeItem(Item item) {
-//        this.roomItems.remove(item);
-//    }
 
     public boolean isExit() {
         return exit;

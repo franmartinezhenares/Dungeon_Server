@@ -31,7 +31,7 @@ public class GetKeyController extends HttpServlet {
             int keyValue = key.getKeyValue();
             int playerCoins = player.getPlayerCoins();
             if(keyValue <= playerCoins) {
-                message = "Has conseguido la llave";
+                message = "You got a Key";
                 player.addToInventory(key);
                 for (int i = 0; i < key.getKeyValue() ; i++) {
                     player.removePlayerCoins();
@@ -39,7 +39,7 @@ public class GetKeyController extends HttpServlet {
                 req.setAttribute("sessionPlayer", player);
                 room.removeKey();
             } else {
-                message = "No tienes suficientes monedas";
+                message = "Not enough coins";
             }
         }
         String roomJson = gameUtils.getJsonInfo(room, player, message);

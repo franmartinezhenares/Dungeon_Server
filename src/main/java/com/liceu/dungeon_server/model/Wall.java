@@ -3,11 +3,11 @@ package com.liceu.dungeon_server.model;
 public class Wall implements RoomSide{
     @Override
     public String enter(Player player) {
-        return "No se puede pasar a través de una pared";
+        return "You can't cross a Wall";
     }
 
     public String open(Player player) {
-        return "No se puede abrir un muro";
+        return "You can't open a Wall";
     }
     public String toString() {
         return "Wall";
