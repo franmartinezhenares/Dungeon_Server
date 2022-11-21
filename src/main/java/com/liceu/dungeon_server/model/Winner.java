@@ -4,6 +4,8 @@ import com.liceu.dungeon_server.services.WinnerService;
 
 public class Winner implements Comparable<Winner>{
     WinnerService winnerService = new WinnerService();
+
+    int winnerId;
     private String winnerName;
     private int mazeSolved;
     private long time;
@@ -35,6 +37,14 @@ public class Winner implements Comparable<Winner>{
 
     public void setTime(long time) {
         this.time = time;
+    }
+
+    public int getWinnerId() {
+        return winnerId;
+    }
+
+    public void setWinnerId(int winnerId) {
+        this.winnerId = winnerId;
     }
 
     @Override

@@ -18,6 +18,7 @@ com\liceu\dungeon_server\controllers\WinnersController.class
 com\liceu\dungeon_server\model\Coin.class
 com\liceu\dungeon_server\services\DoorService.class
 com\liceu\dungeon_server\services\RoomService.class
+com\liceu\dungeon_server\DAO\MySQL\MySqlDatabase.class
 com\liceu\dungeon_server\controllers\NavController.class
 com\liceu\dungeon_server\DAO\MySQL\WinnerDAOMySQL.class
 com\liceu\dungeon_server\model\Winner.class
