@@ -5,21 +5,24 @@ import com.liceu.dungeon_server.DAO.WinnerDAO;
 import com.liceu.dungeon_server.model.Winner;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class WinnerService {
     WinnerDAO winnerDAO = new WinnerDAOMySQL();
 
-    public void createWinner(String name, int mazeID, long time) {
+    public void createWinner(String name, String mazeName, long time) {
         Winner winner = new Winner();
         winner.setWinnerName(name);
-        winner.setMazeSolved(mazeID);
+        winner.setMazeSolved(mazeName);
         winner.setTime(time);
         winnerDAO.insert(winner);
     }
 
     public List<Winner> getAllWinners() {
-        return winnerDAO.getWinnersList();
+        List<Winner> winList = winnerDAO.getWinnersList();
+        Collections.sort(winList);
+        return winList;
     }
 
     public String formatTime(long timeInMs) {

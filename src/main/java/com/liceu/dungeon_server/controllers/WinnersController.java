@@ -24,10 +24,6 @@ public class WinnersController extends HttpServlet {
         List<Winner> winnersList = winnerService.getAllWinners();
 
 
-        for(Winner winner : winnersList) {
-
-        }
-
         req.setAttribute("winnerslist", winnersList);
 
 

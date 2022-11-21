@@ -19,6 +19,7 @@ public class GameUtils {
             case 1:
 
                 builderUtils.setMazeID(1);
+                builderUtils.setMazeName("First Maze");
 
                 for (int i = 1; i <= 6 ; i++) {
                     builderUtils.buildRoom(i);
@@ -48,6 +49,7 @@ public class GameUtils {
 
             case 2:
                 builderUtils.setMazeID(2);
+                builderUtils.setMazeName("Second Maze");
                 for (int i = 1; i <= 2 ; i++) {
                     builderUtils.buildRoom(i);
                 }

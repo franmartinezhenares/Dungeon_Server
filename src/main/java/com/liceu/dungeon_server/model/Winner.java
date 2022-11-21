@@ -7,7 +7,7 @@ public class Winner implements Comparable<Winner>{
 
     int winnerId;
     private String winnerName;
-    private int mazeSolved;
+    private String mazeSolved;
     private long time;
 
 
@@ -19,11 +19,15 @@ public class Winner implements Comparable<Winner>{
         this.winnerName = winnerName;
     }
 
-    public int getMazeSolved() {
+    public String getMazeSolved() {
         return mazeSolved;
     }
 
-    public void setMazeSolved(int mazeSolved) {
+    public String getMazeSolvedName(int mazeID) {
+        return getMazeSolvedName(mazeID);
+    }
+
+    public void setMazeSolved(String mazeSolved) {
         this.mazeSolved = mazeSolved;
     }
 

@@ -14,16 +14,16 @@ import java.util.List;
 import static com.liceu.dungeon_server.DAO.MySQL.MySqlDatabase.getConnection;
 
 public class WinnerDAOMySQL implements WinnerDAO {
-    public static List<Winner> winnersList = new ArrayList<>();
+//    public static List<Winner> winnersList = new ArrayList<>();
 
     @Override
     public void insert(Winner winner) {
         try {
             Connection con = getConnection();
-            String query = "insert into winners (name, mazeid, time) values (?,?,?)";
+            String query = "insert into winners (name, mazename, time) values (?,?,?)";
             PreparedStatement preparedStatement = con.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setString(1, winner.getWinnerName());
-            preparedStatement.setInt(2, (int)winner.getMazeSolved());
+            preparedStatement.setString(2, winner.getMazeSolved());
             preparedStatement.setInt(3, (int) winner.getTime());
             preparedStatement.execute();
             ResultSet resultSet = preparedStatement.getGeneratedKeys();
@@ -35,12 +35,31 @@ public class WinnerDAOMySQL implements WinnerDAO {
             throw new RuntimeException(e);
         }
 
-        winnersList.add(winner);
     }
 
     @Override
     public List<Winner> getWinnersList() {
-        Collections.sort(winnersList);
-        return winnersList;
-    }
+            try {
+                List<Winner> allWinners = new ArrayList<>();
+                Connection con = getConnection();
+                Statement st = con.createStatement();
+                ResultSet resultSet = st.executeQuery("select * from Winners");
+                while (resultSet.next()) {
+                    int id = resultSet.getInt(1);
+                    String playerName = resultSet.getString(2);
+                    String mazeName = resultSet.getString(3);
+                    Long time = resultSet.getLong(4);
+                    Winner winner = new Winner();
+                    winner.setWinnerId(id);
+                    winner.setWinnerName(playerName);
+                    winner.setMazeSolved(mazeName);
+                    winner.setTime(time);
+                    allWinners.add(winner);
+                }
+                return allWinners;
+            } catch (Exception e) {
+                throw new RuntimeException(e);
+            }
+        }
+
 }

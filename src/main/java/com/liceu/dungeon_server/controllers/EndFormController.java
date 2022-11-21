@@ -38,7 +38,7 @@ public class EndFormController extends HttpServlet {
 
 //        String timeString = winnerService.formatTime(totalTime);
 
-        winnerService.createWinner(name, maze.getMazeID(), totalTime);
+        winnerService.createWinner(name, maze.getMazeName(), totalTime);
 
 
         resp.sendRedirect("/winners");

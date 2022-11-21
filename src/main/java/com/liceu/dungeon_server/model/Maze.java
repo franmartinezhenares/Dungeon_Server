@@ -7,6 +7,8 @@ public class Maze {
 
     int mazeID;
 
+    String mazeName;
+
     public enum Directions { NORTH, SOUTH, EAST, WEST;}
     Map<Integer, Room> rooms = new HashMap<>();
 
@@ -32,5 +34,14 @@ public class Maze {
 
     public Room getRoomFromID(int roomID) {
         return this.rooms.get(roomID);
+    }
+
+    public String getMazeName() {
+
+        return mazeName;
+    }
+
+    public void setMazeName(String mazeName) {
+        this.mazeName = mazeName;
     }
 }

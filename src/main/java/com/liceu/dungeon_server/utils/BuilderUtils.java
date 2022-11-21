@@ -76,6 +76,7 @@ public class BuilderUtils {
     }
 
     public void setMazeID(int mazeID) {this.maze.setMazeID(mazeID);}
+    public void setMazeName(String mazeName) {this.maze.setMazeName(mazeName);}
     public Maze getMaze() {
         return this.maze;
     }
