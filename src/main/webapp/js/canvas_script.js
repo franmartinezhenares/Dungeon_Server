@@ -1,6 +1,7 @@
 let room = new Object();
 room = JSON.parse(document.getElementById("currentRoom").textContent);
 
+
 let canvas = document.getElementById("navigation_canvas");
 const ctx = canvas.getContext("2d");
 let scale = 2;
@@ -16,15 +17,17 @@ function drawUI() {
     background.onload = () => {
         ctx.drawImage(background, 0, 0);
         drawRoom(room);
-        drawInventory(room.player.playerCoins, room.player.playerKeys);
+        drawInventory(room.player.playerCoins, room.player.playerKeys, room.walls.RoomID);
         drawMessage(room.walls.Message);
     }
 }
 
-function drawInventory(coins, keys) {
+function drawInventory(coins, keys, roomID) {
     ctx.font = "36px Castellar";
     ctx.fillStyle = "#ddd";
     ctx.fillText("" + coins, 178, 52);
+    ctx.font = "26px Castellar";
+    ctx.fillText("" + roomID, 160, 229);
 
     keys.forEach(element => {
         if(element==="bronzeKey") {
@@ -52,9 +55,9 @@ function drawInventory(coins, keys) {
 }
 
 function drawMessage(message) {
-    ctx.font = "12px Castellar";
+    ctx.font = "16px Castellar";
     ctx.fillStyle = "#ddd";
-    ctx.fillText(message, 20, 280);
+    ctx.fillText(message, 20, 285);
 }
 
 function clickHandler() {

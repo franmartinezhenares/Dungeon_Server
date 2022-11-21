@@ -73,6 +73,7 @@ public class GameUtils {
         roomInfo.put("S", room.getDirection(Maze.Directions.SOUTH).toString());
         roomInfo.put("E", room.getDirection(Maze.Directions.EAST).toString());
         roomInfo.put("W", room.getDirection(Maze.Directions.WEST).toString());
+        roomInfo.put("RoomID", room.getRoomID());
         roomInfo.put("Message", message);
         root.put("walls", roomInfo);
 
