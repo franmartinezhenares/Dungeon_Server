@@ -35,7 +35,4 @@ public class WinnerService {
 
         return minutesStr + "'" + secondsStr + '"';
     }
-
-
-
 }

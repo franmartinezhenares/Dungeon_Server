@@ -25,7 +25,6 @@ public class StartController extends HttpServlet {
 
         // Inicio del juego, bienvenida, formulario de inicio (selección de mapa)
 
-        HttpSession session = req.getSession();
         String selectedMaze = req.getParameter("maze_select");
 
         System.out.println("Selected: " + selectedMaze);
@@ -51,9 +50,6 @@ public class StartController extends HttpServlet {
 
         session.setAttribute("sessionPlayer", player);
         session.setAttribute("sessionMaze", maze);
-
-//        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
-//        dispatcher.forward(req, resp);
 
         resp.sendRedirect("/nav");
 

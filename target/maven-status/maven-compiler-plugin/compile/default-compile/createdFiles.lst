@@ -13,7 +13,6 @@ com\liceu\dungeon_server\services\KeyService.class
 com\liceu\dungeon_server\controllers\StartController.class
 com\liceu\dungeon_server\model\Player.class
 com\liceu\dungeon_server\controllers\OpenController.class
-com\liceu\dungeon_server\services\MazeService.class
 com\liceu\dungeon_server\controllers\WinnersController.class
 com\liceu\dungeon_server\model\Coin.class
 com\liceu\dungeon_server\services\DoorService.class

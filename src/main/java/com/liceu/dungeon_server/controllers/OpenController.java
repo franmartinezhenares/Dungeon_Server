@@ -42,11 +42,7 @@ public class OpenController extends HttpServlet {
                     message = "You don't have the Key";
                 }
             }
-
         }
-
-
-
 
         req.setAttribute("sessionPlayer", player);
 

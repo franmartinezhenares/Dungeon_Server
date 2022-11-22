@@ -18,9 +18,6 @@ public class BuilderUtils {
         maze.addRoom(nRoom, room);
     }
 
-//    public void buildDoor(int roomFrom, int roomTo, Maze.Directions direction) {
-//        Door door = buildDoorInternal(roomFrom, roomTo, direction, false);
-//    }
 
     public void buildDoor(int roomFrom, int roomTo, Maze.Directions direction, Key key) {
         Door door = buildDoorInternal(roomFrom, roomTo, direction, false, key);
