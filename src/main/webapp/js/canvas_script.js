@@ -13,14 +13,36 @@ canvas.addEventListener("mousedown", function (event) {
     clickHandler();
 });
 
+const player = new Image();
+player.src = "/assets/player_spritesheet.png";
+
+const spriteWidth = 48;
+const spriteHeight = 72;
+let frameX = 1;
+let frameY = 0;
+let gameFrame = 0;
+let destinationX = 438;
+let destinationY = 138;
+
+let destinationCounter = 1;
+
+
 function drawUI() {
     background.onload = () => {
         ctx.drawImage(background, 0, 0);
         drawRoom(room);
         drawInventory(room.player.playerCoins, room.player.playerKeys, room.walls.RoomID);
         drawMessage(room.walls.Message);
+
+
+        ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+                                destinationX, destinationY, spriteWidth,spriteHeight);
+
+
     }
+    requestAnimationFrame(drawUI);
 }
+
 
 function drawInventory(coins, keys, roomID) {
     ctx.font = "36px Castellar";
@@ -71,7 +93,6 @@ function clickHandler() {
     } else {
 
         // Navigation
-
         if(posX > 390 && posX < 530 && posY > 0 && posY < 40) {
             navigateDungeon("up");
         }
@@ -86,7 +107,6 @@ function clickHandler() {
         }
 
         // Doors
-
         if(posX > 440 && posX < 480 && posY > 60 && posY < 100) {
             openDoor("up");
         }
@@ -101,15 +121,18 @@ function clickHandler() {
         }
 
         // Key
-
         if(posX > 380 && posX < 415 && posY > 100 && posY < 135) {
             getKey();
         }
 
         // Coin
-
         if(posX > 500 && posX < 535 && posY > 100 && posY < 135) {
             getCoin();
+        }
+
+        // Restart
+        if(posX > 82 && posX < 196 && posY > 325 && posY < 355) {
+            restart();
         }
     }
 }
@@ -174,6 +197,11 @@ function getKey() {
 function getCoin() {
     console.log("get Coin!");
     window.location.assign("/getcoin")
+}
+
+function restart() {
+    console.log("restart");
+    window.location.assign("/restart");
 }
 
 function drawWall(position) {
@@ -265,50 +293,6 @@ function drawKey() {
     };
 }
 
-
-const player = new Image();
-player.src = "/assets/player_spritesheet.png";
-
-const spriteWidth = 48;
-const spriteHeight = 72;
-let frameX = 0;
-let frameY = 0;
-let gameFrame = 0;
-let destinationX = 438;
-let destinationY = 138;
-
-let destinationCounter = 1;
-
-
-function animatePlayer() {
-//   ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
-//                        destinationX, destinationY, spriteWidth,spriteHeight);
-
-    if(gameFrame%100 === 0) {
-        if(frameX < 2) frameX++;
-        else frameX = 0;
-    }
-
-    if(destinationCounter%15 === 0) {
-        destinationY++;
-    }
-
-    gameFrame++;
-    // destinationCounter++;
-
-    console.log(gameFrame);
-
-
-    // ctx.clearRect(destinationX, destinationY, spriteWidth, spriteHeight);
-    ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
-                        destinationX, destinationY, spriteWidth,spriteHeight);
-
-  requestAnimationFrame(animatePlayer);
-
-
-};
-
-
 function drawRoom(room) {
     console.log("North:" + room.walls.N);
     console.log("South:" + room.walls.S);
@@ -351,8 +335,5 @@ function drawRoom(room) {
 
 }
 
-animatePlayer();
-
 drawUI();
 
-// setInterval(drawUI, 1000);
