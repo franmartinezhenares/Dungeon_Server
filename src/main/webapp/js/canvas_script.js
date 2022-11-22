@@ -1,46 +1,173 @@
 let room = new Object();
 room = JSON.parse(document.getElementById("currentRoom").textContent);
 
+const srcs = ["/assets/game_background.jpg", "/assets/player_spritesheet.png", "/assets/key_image.png", "/assets/wall_image.png", "/assets/wall_image_2.png",
+"/assets/door_image.png", "/assets/door_image_2.png", "/assets/coin_image.png"];
+const images = srcs.map((src) => {
+    const image = new Image();
+    image.src = src;
+    return image;
+});
+const imagesLoaded = () => images.every((image) => image.complete);
+images.forEach((image) => {
+    image.onload = () => {
+        if (imagesLoaded()) {
+            drawUI();
+            ctx.drawImage(images[1], 48, 0, 48, 72, 438, 138, 48,72);
+        }
+    };
+});
+
 
 let canvas = document.getElementById("navigation_canvas");
 const ctx = canvas.getContext("2d");
 let scale = 2;
 
-const background = new Image();
-background.src = "/assets/game_background.jpg"
-
 canvas.addEventListener("mousedown", function (event) {
     clickHandler();
 });
 
-const player = new Image();
-player.src = "/assets/player_spritesheet.png";
-
 const spriteWidth = 48;
 const spriteHeight = 72;
-let frameX = 1;
+let frameX = 0;
 let frameY = 0;
-let gameFrame = 0;
 let destinationX = 438;
 let destinationY = 138;
 
-let destinationCounter = 1;
 
+let start, previousTimeStamp;
+let done = false;
+
+function moveN(timestamp) {
+
+    frameY = 3;
+
+    if (start === undefined) {
+        start = timestamp;
+    }
+    const elapsed = timestamp - start;
+
+    if (previousTimeStamp !== timestamp) {
+        const count = Math.floor(0.1 * elapsed, 150);
+        destinationY--;
+        if(count%15 === 0){
+            frameX++
+            if(frameX > 2){
+                frameX = 0;
+            }
+        }
+        drawUI();
+        ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+            destinationX, destinationY, spriteWidth,spriteHeight);
+        if (count === 200) done = true;
+    }
+
+    if (elapsed < 2000) {
+        previousTimeStamp = timestamp;
+        if (!done) {
+            window.requestAnimationFrame(moveN);
+        }
+    }
+}
+function moveS(timestamp) {
+
+    frameY = 0;
+
+    if (start === undefined) {
+        start = timestamp;
+    }
+    const elapsed = timestamp - start;
+
+    if (previousTimeStamp !== timestamp) {
+        const count = Math.floor(0.1 * elapsed, 150);
+        destinationY++;
+        if(count%15 === 0){
+            frameX++
+            if(frameX > 2){
+                frameX = 0;
+            }
+        }
+        drawUI();
+        ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+            destinationX, destinationY, spriteWidth,spriteHeight);
+        if (count === 200) done = true;
+    }
+
+    if (elapsed < 2000) {
+        previousTimeStamp = timestamp;
+        if (!done) {
+            window.requestAnimationFrame(moveS);
+        }
+    }
+}
+function moveW(timestamp) {
+
+    frameY = 1;
+
+    if (start === undefined) {
+        start = timestamp;
+    }
+    const elapsed = timestamp - start;
+
+    if (previousTimeStamp !== timestamp) {
+        const count = Math.floor(0.2 * elapsed, 200);
+        destinationX--;
+        if(count%15 === 0){
+            frameX++
+            if(frameX > 2){
+                frameX = 0;
+            }
+        }
+        drawUI();
+        ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+            destinationX, destinationY, spriteWidth,spriteHeight);
+        if (count === 200) done = true;
+    }
+
+    if (elapsed < 2000) {
+        previousTimeStamp = timestamp;
+        if (!done) {
+            window.requestAnimationFrame(moveW);
+        }
+    }
+}
+function moveE(timestamp) {
+
+    frameY = 2;
+
+    if (start === undefined) {
+        start = timestamp;
+    }
+    const elapsed = timestamp - start;
+
+    if (previousTimeStamp !== timestamp) {
+        const count = Math.floor(0.1 * elapsed, 150);
+        destinationX++;
+        if(count%15 === 0){
+            frameX++
+            if(frameX > 2){
+                frameX = 0;
+            }
+        }
+        drawUI();
+        ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
+            destinationX, destinationY, spriteWidth,spriteHeight);
+        if (count === 200) done = true;
+    }
+
+    if (elapsed < 2000) {
+        previousTimeStamp = timestamp;
+        if (!done) {
+            window.requestAnimationFrame(moveE);
+        }
+    }
+}
 
 function drawUI() {
-    background.onload = () => {
-        ctx.drawImage(background, 0, 0);
-        drawRoom(room);
-        drawInventory(room.player.playerCoins, room.player.playerKeys, room.walls.RoomID);
-        drawMessage(room.walls.Message);
-
-
-        ctx.drawImage(player, frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
-                                destinationX, destinationY, spriteWidth,spriteHeight);
-
-
-    }
-    requestAnimationFrame(drawUI);
+    ctx.drawImage(images[0], 0, 0);
+    drawRoom(room);
+    drawInventory(room.player.playerCoins, room.player.playerKeys, room.walls.RoomID);
+    drawMessage(room.walls.Message);
 }
 
 
@@ -53,25 +180,13 @@ function drawInventory(coins, keys, roomID) {
 
     keys.forEach(element => {
         if(element==="bronzeKey") {
-            const key = new Image();
-            key.src = "/assets/key_image.png"
-            key.onload = () => {
-            ctx.drawImage(key, 40, 140);
-            };
+            ctx.drawImage(images[2], 40, 140);
         }
         if(element==="silverKey") {
-            const key = new Image();
-            key.src = "/assets/key_image.png"
-            key.onload = () => {
-            ctx.drawImage(key, 120, 140);
-            };
+            ctx.drawImage(images[2], 120, 140);
         }
         if(element==="goldKey") {
-            const key = new Image();
-            key.src = "/assets/key_image.png"
-            key.onload = () => {
-            ctx.drawImage(key, 200, 140);
-            };
+            ctx.drawImage(images[2], 200, 140);
         }
     });
 }
@@ -143,19 +258,23 @@ function navigateDungeon(direction) {
     switch (moveTo) {
         case "up":
             console.log("Moving UP !!!")
-            window.location.assign("/nav?dir=NORTH")
+            requestAnimationFrame(moveN);
+             window.location.assign("/nav?dir=NORTH")
             break;
         case "down":
             console.log("Moving DOWN !!!")
-            window.location.assign("/nav?dir=SOUTH")
+            requestAnimationFrame(moveS);
+             window.location.assign("/nav?dir=SOUTH")
             break;
         case "left":
             console.log("Moving LEFT !!!")
-            window.location.assign("/nav?dir=WEST")
+            requestAnimationFrame(moveW);
+             window.location.assign("/nav?dir=WEST")
             break;
         case "right":
             console.log("Moving RIGHT !!!")
-            window.location.assign("/nav?dir=EAST")
+            requestAnimationFrame(moveE);
+             window.location.assign("/nav?dir=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")
@@ -206,33 +325,20 @@ function restart() {
 
 function drawWall(position) {
 
-    const wallLR = new Image();
-    wallLR.src = "/assets/wall_image.png"
-    const wallUD = new Image();
-    wallUD.src = "/assets/wall_image_2.png"
-
     let drawPosition = position;
 
     switch (drawPosition) {
         case "up":
-            wallUD.onload = () => {
-                ctx.drawImage(wallUD, 420, 73);
-            };
+            ctx.drawImage(images[4], 420, 73);
             break;
         case "down":
-            wallUD.onload = () => {
-                ctx.drawImage(wallUD, 420, 273);
-            };
+            ctx.drawImage(images[4], 420, 273);
             break;
         case "left":
-            wallLR.onload = () => {
-                ctx.drawImage(wallLR, 353, 140);
-            };
+            ctx.drawImage(images[3], 353, 140);
             break;
         case "right":
-            wallLR.onload = () => {
-                ctx.drawImage(wallLR, 553, 140);
-            };
+            ctx.drawImage(images[3], 553, 140);
             break;
         default:
             console.log("NOT A DIRECTION")
@@ -242,33 +348,20 @@ function drawWall(position) {
 
 function drawDoor(position) {
 
-    const doorLR = new Image();
-    doorLR.src = "/assets/door_image.png"
-    const doorUD = new Image();
-    doorUD.src = "/assets/door_image_2.png"
-
     let drawPosition = position;
 
     switch (drawPosition) {
         case "up":
-            doorUD.onload = () => {
-                ctx.drawImage(doorUD, 420, 62);
-            };
+            ctx.drawImage(images[6], 420, 62);
             break;
         case "down":
-            doorUD.onload = () => {
-                ctx.drawImage(doorUD, 420, 262);
-            };
+            ctx.drawImage(images[6], 420, 262);
             break;
         case "left":
-            doorLR.onload = () => {
-                ctx.drawImage(doorLR, 342, 140);
-            };
+            ctx.drawImage(images[5], 342, 140);
             break;
         case "right":
-            doorLR.onload = () => {
-                ctx.drawImage(doorLR, 542, 140);
-            };
+            ctx.drawImage(images[5], 542, 140);
             break;
         default:
             console.log("NOT A DIRECTION")
@@ -278,19 +371,11 @@ function drawDoor(position) {
 }
 
 function drawCoin() {
-    const coin = new Image();
-    coin.src = "/assets/coin_image.png"
-    coin.onload = () => {
-        ctx.drawImage(coin, 500, 100);
-    };
+    ctx.drawImage(images[7], 500, 100);
 }
 
 function drawKey() {
-    const key = new Image();
-    key.src = "/assets/key_image.png"
-    key.onload = () => {
-        ctx.drawImage(key, 380, 100);
-    };
+    ctx.drawImage(images[2], 380, 100);
 }
 
 function drawRoom(room) {
@@ -331,9 +416,8 @@ function drawRoom(room) {
     if(room.item.Coin === "Coin") {
         drawCoin();
     }
-
-
 }
 
-drawUI();
-
+//drawUI();
+//ctx.drawImage(images[1], 0, 96, 48, 72,
+//            438, 138, 48,72);
