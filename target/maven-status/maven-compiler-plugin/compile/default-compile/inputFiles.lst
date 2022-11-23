@@ -16,6 +16,7 @@ C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\controllers\GetKeyController.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\model\Coin.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\model\Key.java
+C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\filters\WinnersFilter.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\model\RoomSide.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\model\Room.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\controllers\OpenController.java
@@ -23,5 +24,6 @@ C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\services\RoomService.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\model\Winner.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\model\Maze.java
+C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\filters\NavigationFilter.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\services\KeyService.java
 C:\Users\G513\Desktop\DAW\Programacion\Dungeon_Server_3\src\main\java\com\liceu\dungeon_server\services\PlayerService.java
