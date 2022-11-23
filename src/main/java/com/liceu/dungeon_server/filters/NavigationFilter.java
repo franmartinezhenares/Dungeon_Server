@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = "/nav /getcoin /getkey /open")
+@WebFilter(urlPatterns = {"/nav", "/getcoin", "/getkey", "/open"})
 public class NavigationFilter extends HttpFilter {
 
     @Override
@@ -20,12 +20,10 @@ public class NavigationFilter extends HttpFilter {
         Player player = (Player)session.getAttribute("sessionPlayer");
 
         if(player == null) {
-//            res.sendRedirect("/start");
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/start.jsp");
             dispatcher.forward(req, res);
             return;
         }
         chain.doFilter(req, res);
-//        super.doFilter(req, res, chain);
     }
 }
