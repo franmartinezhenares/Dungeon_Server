@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebFilter(urlPatterns = {"/endform", "/winners"})
+@WebFilter(urlPatterns = "/endform")
 public class WinnersFilter extends HttpFilter {
 
     @Override
@@ -27,11 +27,6 @@ public class WinnersFilter extends HttpFilter {
             return;
         }
 
-//        if(player.isWinner()) &&  {
-//            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/start.jsp");
-//            dispatcher.forward(req, res);
-//            return;
-//        }
         chain.doFilter(req, res);
     }
 }

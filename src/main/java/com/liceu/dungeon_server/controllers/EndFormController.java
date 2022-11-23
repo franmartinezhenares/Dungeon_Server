@@ -1,6 +1,7 @@
 package com.liceu.dungeon_server.controllers;
 
 import com.liceu.dungeon_server.model.Maze;
+import com.liceu.dungeon_server.model.Player;
 import com.liceu.dungeon_server.services.WinnerService;
 
 import javax.servlet.RequestDispatcher;
@@ -25,6 +26,9 @@ public class EndFormController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         Maze maze = (Maze) session.getAttribute("sessionMaze");
+        Player player = (Player)session.getAttribute("sessionPlayer");
+        player.setWinner(false);
+        session.setAttribute("sessionPlayer", player);
 
         String name = req.getParameter("player_name");
 
