@@ -48,7 +48,7 @@ function moveN(timestamp) {
     const elapsed = timestamp - start;
 
     if (previousTimeStamp !== timestamp) {
-        const count = Math.floor(0.1 * elapsed, 150);
+        const count = Math.floor(0.2 * elapsed, 200);
         destinationY--;
         if(count%15 === 0){
             frameX++
@@ -59,13 +59,15 @@ function moveN(timestamp) {
         drawUI();
         ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
             destinationX, destinationY, spriteWidth,spriteHeight);
-        if (count === 200) done = true;
+        if (count > 150) done = true;
     }
 
     if (elapsed < 2000) {
         previousTimeStamp = timestamp;
         if (!done) {
             window.requestAnimationFrame(moveN);
+        } else {
+            window.location.assign("/nav?dir=NORTH")
         }
     }
 }
@@ -79,7 +81,7 @@ function moveS(timestamp) {
     const elapsed = timestamp - start;
 
     if (previousTimeStamp !== timestamp) {
-        const count = Math.floor(0.1 * elapsed, 150);
+        const count = Math.floor(0.2 * elapsed, 200);
         destinationY++;
         if(count%15 === 0){
             frameX++
@@ -90,13 +92,15 @@ function moveS(timestamp) {
         drawUI();
         ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
             destinationX, destinationY, spriteWidth,spriteHeight);
-        if (count === 200) done = true;
+        if (count > 150) done = true;
     }
 
     if (elapsed < 2000) {
         previousTimeStamp = timestamp;
         if (!done) {
             window.requestAnimationFrame(moveS);
+        }else{
+            window.location.assign("/nav?dir=SOUTH")
         }
     }
 }
@@ -121,13 +125,15 @@ function moveW(timestamp) {
         drawUI();
         ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
             destinationX, destinationY, spriteWidth,spriteHeight);
-        if (count === 200) done = true;
+        if (count > 150) done = true;
     }
 
     if (elapsed < 2000) {
         previousTimeStamp = timestamp;
         if (!done) {
             window.requestAnimationFrame(moveW);
+        } else {
+            window.location.assign("/nav?dir=WEST")
         }
     }
 }
@@ -141,7 +147,7 @@ function moveE(timestamp) {
     const elapsed = timestamp - start;
 
     if (previousTimeStamp !== timestamp) {
-        const count = Math.floor(0.1 * elapsed, 150);
+        const count = Math.floor(0.2 * elapsed, 200);
         destinationX++;
         if(count%15 === 0){
             frameX++
@@ -152,13 +158,15 @@ function moveE(timestamp) {
         drawUI();
         ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
             destinationX, destinationY, spriteWidth,spriteHeight);
-        if (count === 200) done = true;
+        if (count > 150) done = true;
     }
 
     if (elapsed < 2000) {
         previousTimeStamp = timestamp;
         if (!done) {
             window.requestAnimationFrame(moveE);
+        } else {
+            window.location.assign("/nav?dir=EAST");
         }
     }
 }
@@ -258,22 +266,21 @@ function navigateDungeon(direction) {
         case "up":
             console.log("Moving UP !!!")
             requestAnimationFrame(moveN);
-            window.location.assign("/nav?dir=NORTH")
+//            window.location.assign("/nav?dir=NORTH")
             break;
         case "down":
             console.log("Moving DOWN !!!")
             requestAnimationFrame(moveS);
-            window.location.assign("/nav?dir=SOUTH")
+//            window.location.assign("/nav?dir=SOUTH")
             break;
         case "left":
             console.log("Moving LEFT !!!")
             requestAnimationFrame(moveW);
-            window.location.assign("/nav?dir=WEST")
             break;
         case "right":
             console.log("Moving RIGHT !!!")
             requestAnimationFrame(moveE);
-            window.location.assign("/nav?dir=EAST")
+//            window.location.assign("/nav?dir=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")
