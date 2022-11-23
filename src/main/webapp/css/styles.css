@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "Castellar";
-    src: url('/fonts/CASTELLAR.ttf') format('truetype');
+    font-family: "Castelar";
+    src: url("/fonts/CASTELAR.TTF") format('truetype');
     font-style: normal;
     font-weight: normal;
 }
@@ -9,7 +9,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Castellar';
+    font-family: 'Castelar';
     font-size: 1.5rem;
 }
 

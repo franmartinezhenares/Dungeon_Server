@@ -14,6 +14,9 @@ public class GameUtils {
 
     public Maze createMaze(int mazeID) {
         BuilderUtils builderUtils = new BuilderUtils();
+        Key bronzeKey = keyService.createKey("bronzeKey", 1);
+        Key silverKey = keyService.createKey("silverKey", 2);
+        Key goldKey = keyService.createKey("goldKey", 2);
 
         switch (mazeID) {
             case 1:
@@ -24,9 +27,6 @@ public class GameUtils {
                 for (int i = 1; i <= 6 ; i++) {
                     builderUtils.buildRoom(i);
                 }
-                Key bronzeKey = keyService.createKey("bronzeKey", 1);
-                Key silverKey = keyService.createKey("silverKey", 2);
-                Key goldKey = keyService.createKey("goldKey", 2);
 
                 builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
                 builderUtils.buildDoor(2, 3, Maze.Directions.WEST, bronzeKey);
@@ -49,12 +49,23 @@ public class GameUtils {
 
             case 2:
                 builderUtils.setMazeID(2);
-                builderUtils.setMazeName("Second Maze");
-                for (int i = 1; i <= 2 ; i++) {
+                builderUtils.setMazeName("Pere\'s Maze");
+
+                for (int i = 1; i <= 6 ; i++) {
                     builderUtils.buildRoom(i);
                 }
-                builderUtils.buildCorridor(1, 2, Maze.Directions.WEST);
-                builderUtils.setExit(2);
+                builderUtils.buildCorridor(1, 5, Maze.Directions.EAST);
+                builderUtils.buildCorridor(1, 2, Maze.Directions.NORTH);
+                builderUtils.putKeyInRoom(2, bronzeKey);
+                builderUtils.buildCorridor(1, 4, Maze.Directions.SOUTH);
+                builderUtils.buildDoor(5, 6, Maze.Directions.EAST, bronzeKey);
+                builderUtils.putKeyInRoom(6, silverKey);
+                builderUtils.buildDoor(1, 3, Maze.Directions.WEST, silverKey);
+                builderUtils.putCoinInRoom(1);
+                builderUtils.putCoinInRoom(4);
+                builderUtils.putCoinInRoom(6);
+
+                builderUtils.setExit(3);
         }
 
 

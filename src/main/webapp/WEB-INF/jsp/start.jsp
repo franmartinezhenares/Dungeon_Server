@@ -18,7 +18,7 @@
             Select Maze:
             <select name="maze_select" id="maze_select">
                 <option value=1>Tutorial Maze</option>
-                <option value=2>Maze 2</option>
+                <option value=2>Peres Maze</option>
             </select>
             <div class="start_submit">
                 <input id="play_button" type="submit" name="play" value="Play">

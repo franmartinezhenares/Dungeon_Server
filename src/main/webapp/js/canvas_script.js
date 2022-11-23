@@ -37,10 +37,12 @@ let destinationY = 138;
 
 let start, previousTimeStamp;
 let done = false;
+let frameCount = 0;
 
 function moveN(timestamp) {
 
     frameY = 3;
+    frameCount++;
 
     if (start === undefined) {
         start = timestamp;
@@ -50,11 +52,12 @@ function moveN(timestamp) {
     if (previousTimeStamp !== timestamp) {
         const count = Math.floor(0.2 * elapsed, 200);
         destinationY--;
-        if(count%15 === 0){
+        if(frameCount > 5){
             frameX++
             if(frameX > 2){
                 frameX = 0;
             }
+            frameCount = 0;
         }
         drawUI();
         ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
@@ -74,6 +77,7 @@ function moveN(timestamp) {
 function moveS(timestamp) {
 
     frameY = 0;
+    frameCount++;
 
     if (start === undefined) {
         start = timestamp;
@@ -83,11 +87,12 @@ function moveS(timestamp) {
     if (previousTimeStamp !== timestamp) {
         const count = Math.floor(0.2 * elapsed, 200);
         destinationY++;
-        if(count%15 === 0){
+        if(frameCount > 5){
             frameX++
             if(frameX > 2){
                 frameX = 0;
             }
+            frameCount = 0;
         }
         drawUI();
         ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
@@ -107,6 +112,7 @@ function moveS(timestamp) {
 function moveW(timestamp) {
 
     frameY = 1;
+    frameCount++;
 
     if (start === undefined) {
         start = timestamp;
@@ -116,11 +122,12 @@ function moveW(timestamp) {
     if (previousTimeStamp !== timestamp) {
         const count = Math.floor(0.2 * elapsed, 200);
         destinationX--;
-        if(count%15 === 0){
+        if(frameCount > 5){
             frameX++
             if(frameX > 2){
                 frameX = 0;
             }
+            frameCount = 0;
         }
         drawUI();
         ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
@@ -140,6 +147,7 @@ function moveW(timestamp) {
 function moveE(timestamp) {
 
     frameY = 2;
+    frameCount++;
 
     if (start === undefined) {
         start = timestamp;
@@ -149,11 +157,12 @@ function moveE(timestamp) {
     if (previousTimeStamp !== timestamp) {
         const count = Math.floor(0.2 * elapsed, 200);
         destinationX++;
-        if(count%15 === 0){
+        if(frameCount > 5){
             frameX++
             if(frameX > 2){
                 frameX = 0;
             }
+            frameCount = 0;
         }
         drawUI();
         ctx.drawImage(images[1], frameX*spriteWidth, frameY*spriteHeight, spriteWidth, spriteHeight,
@@ -179,10 +188,10 @@ function drawUI() {
 }
 
 function drawInventory(coins, keys, roomID) {
-    ctx.font = "36px Castellar";
+    ctx.font = "36px Castelar";
     ctx.fillStyle = "#ddd";
     ctx.fillText("" + coins, 178, 52);
-    ctx.font = "26px Castellar";
+    ctx.font = "26px Castelar";
     ctx.fillText("" + roomID, 160, 229);
 
     keys.forEach(element => {
@@ -199,7 +208,7 @@ function drawInventory(coins, keys, roomID) {
 }
 
 function drawMessage(message) {
-    ctx.font = "16px Castellar";
+    ctx.font = "16px Castelar";
     ctx.fillStyle = "#ddd";
     ctx.fillText(message, 20, 285);
 }
@@ -264,23 +273,16 @@ function navigateDungeon(direction) {
 
     switch (moveTo) {
         case "up":
-            console.log("Moving UP !!!")
             requestAnimationFrame(moveN);
-//            window.location.assign("/nav?dir=NORTH")
             break;
         case "down":
-            console.log("Moving DOWN !!!")
             requestAnimationFrame(moveS);
-//            window.location.assign("/nav?dir=SOUTH")
             break;
         case "left":
-            console.log("Moving LEFT !!!")
             requestAnimationFrame(moveW);
             break;
         case "right":
-            console.log("Moving RIGHT !!!")
             requestAnimationFrame(moveE);
-//            window.location.assign("/nav?dir=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")
@@ -293,19 +295,15 @@ function openDoor(direction) {
 
     switch (openDirection) {
         case "up":
-            console.log("Open UP Direction Door")
             window.location.assign("/open?dir=NORTH")
             break;
         case "down":
-            console.log("Open DOWN Direction Door")
             window.location.assign("/open?dir=SOUTH")
             break;
         case "left":
-            console.log("Open LEFT Direction Door")
             window.location.assign("/open?dir=WEST")
             break;
         case "right":
-            console.log("Open RIGHT Direction Door")
             window.location.assign("/open?dir=EAST")
             break;
         default:
@@ -315,17 +313,14 @@ function openDoor(direction) {
 }
 
 function getKey() {
-    console.log("get Key!");
-    window.location.assign("/getkey")
+    window.location.assign("/getkey");
 }
 
 function getCoin() {
-    console.log("get Coin!");
-    window.location.assign("/getcoin")
+    window.location.assign("/getcoin");
 }
 
 function restart() {
-    console.log("restart");
     window.location.assign("/restart");
 }
 
@@ -385,11 +380,6 @@ function drawKey() {
 }
 
 function drawRoom(room) {
-    console.log("North:" + room.walls.N);
-    console.log("South:" + room.walls.S);
-    console.log("East:" + room.walls.E);
-    console.log("West:" + room.walls.W);
-
 
     if(room.walls.N === "Wall") {
         drawWall("up");
@@ -423,7 +413,4 @@ function drawRoom(room) {
         drawCoin();
     }
 }
-
-//drawUI();
-//ctx.drawImage(images[1], 0, 96, 48, 72,
-//            438, 138, 48,72);
+drawUI();
