@@ -19,7 +19,7 @@ public class GameUtils {
             case 1:
 
                 builderUtils.setMazeID(1);
-                builderUtils.setMazeName("First Maze");
+                builderUtils.setMazeName("Tutorial Maze");
 
                 for (int i = 1; i <= 6 ; i++) {
                     builderUtils.buildRoom(i);

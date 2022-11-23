@@ -170,7 +170,6 @@ function drawUI() {
     drawMessage(room.walls.Message);
 }
 
-
 function drawInventory(coins, keys, roomID) {
     ctx.font = "36px Castellar";
     ctx.fillStyle = "#ddd";
@@ -259,22 +258,22 @@ function navigateDungeon(direction) {
         case "up":
             console.log("Moving UP !!!")
             requestAnimationFrame(moveN);
-             window.location.assign("/nav?dir=NORTH")
+            window.location.assign("/nav?dir=NORTH")
             break;
         case "down":
             console.log("Moving DOWN !!!")
             requestAnimationFrame(moveS);
-             window.location.assign("/nav?dir=SOUTH")
+            window.location.assign("/nav?dir=SOUTH")
             break;
         case "left":
             console.log("Moving LEFT !!!")
             requestAnimationFrame(moveW);
-             window.location.assign("/nav?dir=WEST")
+            window.location.assign("/nav?dir=WEST")
             break;
         case "right":
             console.log("Moving RIGHT !!!")
             requestAnimationFrame(moveE);
-             window.location.assign("/nav?dir=EAST")
+            window.location.assign("/nav?dir=EAST")
             break;
         default:
             console.log("NOT A DIRECTION")

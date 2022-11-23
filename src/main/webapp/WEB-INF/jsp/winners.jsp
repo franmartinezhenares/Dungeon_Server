@@ -10,14 +10,14 @@
 </head>
 <body>
 
-    <h1>Lista de Winners</h1>
+    <h1 class="h1_header">Winners List</h1>
 
     <div class="winners_list">
         <table class="winners_table">
             <tr>
-                <th>Player</th>
-                <th>Maze</th>
-                <th>Time</th>
+                <th class="table_header">Player</th>
+                <th class="table_header">Maze</th>
+                <th class="table_header">Time</th>
             </tr>
 
     <c:forEach var="winner" items="${winnerslist}">
