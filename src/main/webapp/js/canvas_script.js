@@ -313,15 +313,19 @@ function openDoor(direction) {
 }
 
 function getKey() {
-    window.location.assign("/getkey");
+    if(room.item.Key === "bronzeKey" || room.item.Key === "silverKey" || room.item.Key === "goldKey") {
+        window.location.assign("/getkey");
+    }
 }
 
 function getCoin() {
-    window.location.assign("/getcoin");
+    if(room.item.Coin === "Coin") {
+        window.location.assign("/getcoin");
+    }
 }
 
 function restart() {
-    window.location.assign("/restart");
+
 }
 
 function drawWall(position) {

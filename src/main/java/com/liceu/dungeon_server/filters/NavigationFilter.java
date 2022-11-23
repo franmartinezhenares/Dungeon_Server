@@ -24,6 +24,7 @@ public class NavigationFilter extends HttpFilter {
             dispatcher.forward(req, res);
             return;
         }
+
         chain.doFilter(req, res);
     }
 }
