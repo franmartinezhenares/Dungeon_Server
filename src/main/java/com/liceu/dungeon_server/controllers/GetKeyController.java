@@ -40,7 +40,8 @@ public class GetKeyController extends HttpServlet {
             } else {
                 message = "Not enough coins";
             }
-        } else {
+        }
+        else {
             resp.setStatus(401);
             req.setAttribute("error", "There is no keys in this room");
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
@@ -50,6 +51,8 @@ public class GetKeyController extends HttpServlet {
         String roomJson = gameUtils.getJsonInfo(room, player, message);
         req.setAttribute("currentRoom", roomJson);
 
-        resp.sendRedirect("/nav");
+//        resp.sendRedirect("/nav");
+        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
+        dispatcher.forward(req, resp);
     }
 }
