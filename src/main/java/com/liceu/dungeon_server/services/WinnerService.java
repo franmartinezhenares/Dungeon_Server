@@ -4,7 +4,6 @@ import com.liceu.dungeon_server.DAO.MySQL.WinnerDAOMySQL;
 import com.liceu.dungeon_server.DAO.WinnerDAO;
 import com.liceu.dungeon_server.model.Winner;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 

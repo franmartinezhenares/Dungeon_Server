@@ -25,6 +25,7 @@ com\liceu\dungeon_server\model\Winner.class
 com\liceu\dungeon_server\services\PlayerService.class
 com\liceu\dungeon_server\model\Maze.class
 com\liceu\dungeon_server\utils\GameUtils.class
+com\liceu\dungeon_server\controllers\ResetController.class
 com\liceu\dungeon_server\filters\NavigationFilter.class
 com\liceu\dungeon_server\services\WinnerService.class
 com\liceu\dungeon_server\utils\BuilderUtils.class

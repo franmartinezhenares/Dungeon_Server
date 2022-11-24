@@ -1,6 +1,5 @@
 package com.liceu.dungeon_server.services;
 
-import com.liceu.dungeon_server.model.Maze;
 import com.liceu.dungeon_server.model.Player;
 import com.liceu.dungeon_server.model.Room;
 

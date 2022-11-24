@@ -31,41 +31,22 @@ public class GetCoinController extends HttpServlet {
             req.setAttribute("sessionPlayer", player);
             room.removeCoin();
 
+            session.setAttribute("message", message);
+
             String roomJson = gameUtils.getJsonInfo(room, player, message);
             req.setAttribute("currentRoom", roomJson);
 
-//            resp.sendRedirect("/nav");
-
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
-            dispatcher.forward(req, resp);
+            resp.sendRedirect("/nav");
 
         } else {
-//            player = (Player) session.getAttribute("sessionPlayer");
-//            room = player.getCurrentRoom();
-//            req.setAttribute("sessionPlayer", player);
-//
-//            message = "Do not cheat!";
-//
-//            String roomJson = gameUtils.getJsonInfo(room, player, message);
-//            req.setAttribute("currentRoom", roomJson);
 
             resp.setStatus(401);
             req.setAttribute("error", "There is no coins in this room");
 
-
-
             RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/error.jsp");
             dispatcher.forward(req, resp);
 
-
-//            resp.sendRedirect("/nav");
         }
 
-//        String roomJson = gameUtils.getJsonInfo(room, player, message);
-//        req.setAttribute("currentRoom", roomJson);
-
-//        resp.sendRedirect("/nav");
-//        RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
-//        dispatcher.forward(req, resp);
     }
 }
