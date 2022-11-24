@@ -325,7 +325,7 @@ function getCoin() {
 }
 
 function restart() {
-
+        window.location.assign("/reset");
 }
 
 function drawWall(position) {
