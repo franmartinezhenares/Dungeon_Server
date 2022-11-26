@@ -14,10 +14,17 @@
     <div class="endform_container">
         <h1>Insert your name</h1>
         <h1>Amongst Winners</h1>
+
         <form method="post" action="/endform">
             <input class="endform_input" type="text" name="player_name">
             <input id="endform_button" type="submit" value=Send>
         </form>
     </div>
+
+        <c:if test="${not empty error}">
+
+            <h2 class="error_message"> Name has to be between 1 and 12 characters </h2>
+
+        </c:if>
 </body>
 </html>

@@ -27,10 +27,18 @@ public class EndFormController extends HttpServlet {
         HttpSession session = req.getSession();
         Maze maze = (Maze) session.getAttribute("sessionMaze");
         Player player = (Player)session.getAttribute("sessionPlayer");
-        player.setWinner(false);
-        session.setAttribute("sessionPlayer", player);
+
 
         String name = req.getParameter("player_name");
+
+        if(name.length() < 1 || name.length() > 12) {
+            req.setAttribute("error", "Error de login");
+            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/endform.jsp");
+            dispatcher.forward(req, resp);
+            return;
+        }
+        player.setWinner(false);
+        session.setAttribute("sessionPlayer", player);
 
         long totalTime = (long)session.getAttribute("totalTime");
 
