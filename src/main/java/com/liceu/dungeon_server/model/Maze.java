@@ -9,8 +9,9 @@ public class Maze {
 
     String mazeName;
 
-    public enum Directions { NORTH, SOUTH, EAST, WEST;}
     Map<Integer, Room> rooms = new HashMap<>();
+
+    public enum Directions { NORTH, SOUTH, EAST, WEST;}
 
     public Map<Integer, Room> getRooms() {
         return rooms;

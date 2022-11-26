@@ -1,0 +1,29 @@
+version: "3"
+services:
+  tomcat:
+    image: tomcat:9.0
+    ports:
+      - "8080:8080"
+      - "5005:5005"
+    volumes:
+      - "./webapps:/usr/local/tomcat/webapps"
+    environment:
+      JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+
+  mysql:
+    image: mysql
+    volumes:
+      - ./mysqlData:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+       - 3306:3306
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - PMA_HOST=mysql
+      - UPLOAD_LIMIT=300M
+    # restart: always
+    ports:
+      - 8081:80

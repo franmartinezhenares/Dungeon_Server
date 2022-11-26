@@ -66,6 +66,38 @@ public class GameUtils {
                 builderUtils.putCoinInRoom(6);
 
                 builderUtils.setExit(3);
+
+            case 3:
+                builderUtils.setMazeID(3);
+                builderUtils.setMazeName("Mad Fran Maze");
+
+                for (int i = 1; i <= 14 ; i++) {
+                    builderUtils.buildRoom(i);
+                }
+                builderUtils.buildCorridor(1, 2, Maze.Directions.EAST);
+                builderUtils.buildCorridor(2, 3, Maze.Directions.EAST);
+                builderUtils.buildCorridor(3, 6, Maze.Directions.SOUTH);
+                builderUtils.buildCorridor(6, 7, Maze.Directions.EAST);
+                builderUtils.buildCorridor(7, 4, Maze.Directions.NORTH);
+                builderUtils.buildCorridor(7, 10, Maze.Directions.EAST);
+                builderUtils.putKeyInRoom(3, bronzeKey);
+                builderUtils.buildDoor(1, 5, Maze.Directions.SOUTH, bronzeKey);
+                builderUtils.buildCorridor(5, 8, Maze.Directions.SOUTH);
+                builderUtils.buildCorridor(8, 9, Maze.Directions.EAST);
+                builderUtils.putKeyInRoom(7, silverKey);
+                builderUtils.buildDoor(10, 14, Maze.Directions.EAST, silverKey);
+                builderUtils.buildCorridor(14, 13, Maze.Directions.WEST);
+                builderUtils.buildCorridor(13, 12, Maze.Directions.WEST);
+                builderUtils.putKeyInRoom(14, goldKey);
+                builderUtils.buildDoor(12, 11, Maze.Directions.WEST, goldKey);
+                builderUtils.putCoinInRoom(2);
+                builderUtils.putCoinInRoom(4);
+                builderUtils.putCoinInRoom(7);
+                builderUtils.putCoinInRoom(8);
+                builderUtils.putCoinInRoom(9);
+                builderUtils.putCoinInRoom(12);
+
+                builderUtils.setExit(11);
         }
 
 
