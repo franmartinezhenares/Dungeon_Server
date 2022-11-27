@@ -3,6 +3,7 @@ package com.liceu.dungeon_server.controllers;
 import com.liceu.dungeon_server.model.Key;
 import com.liceu.dungeon_server.model.Player;
 import com.liceu.dungeon_server.model.Room;
+import com.liceu.dungeon_server.services.RoomService;
 import com.liceu.dungeon_server.utils.GameUtils;
 
 import javax.servlet.RequestDispatcher;
@@ -13,35 +14,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.Objects;
 
 @WebServlet("/getkey")
 public class GetKeyController extends HttpServlet {
     GameUtils gameUtils = new GameUtils();
+    RoomService roomService = new RoomService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         Player player = (Player) session.getAttribute("sessionPlayer");
         Room room = player.getCurrentRoom();
 
-        String message;
+        String message = roomService.getRoomKey(player, room);
 
-        if(room.hasKey()) {
-            Key key = (Key)room.getKey();
-            int keyValue = key.getKeyValue();
-            int playerCoins = player.getPlayerCoins();
-            if(keyValue <= playerCoins) {
-                message = "You got a Key";
-                player.addToInventory(key);
-                for (int i = 0; i < key.getKeyValue() ; i++) {
-                    player.removePlayerCoins();
-                }
-                req.setAttribute("sessionPlayer", player);
-                room.removeKey();
-            } else {
-                message = "Not enough coins";
-            }
+        if(!Objects.equals(message, "")) {
+            req.setAttribute("sessionPlayer", player);
             session.setAttribute("message", message);
-
             String roomJson = gameUtils.getJsonInfo(room, player, message);
             req.setAttribute("currentRoom", roomJson);
 
