@@ -1,6 +1,7 @@
 package com.liceu.dungeon_server.controllers;
 
 import com.liceu.dungeon_server.model.*;
+import com.liceu.dungeon_server.services.DoorService;
 import com.liceu.dungeon_server.services.KeyService;
 import com.liceu.dungeon_server.services.PlayerService;
 import com.liceu.dungeon_server.utils.GameUtils;
@@ -17,7 +18,7 @@ import java.io.IOException;
 @WebServlet("/open")
 public class OpenController extends HttpServlet {
     GameUtils gameUtils = new GameUtils();
-    KeyService keyService = new KeyService();
+    DoorService doorService = new DoorService();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
@@ -26,26 +27,11 @@ public class OpenController extends HttpServlet {
 
         String dir = req.getParameter("dir");
 
-        String message = "";
-
         RoomSide roomSide = room.getDirection(Maze.Directions.valueOf(dir));
 
-        if(roomSide instanceof Door) {
-            Door door = (Door) roomSide;
-            if(door.isOpen()) {
-                message = "There is a Corridor";
-            } else {
-                if(keyService.getDoorKey(door, player.getInventory())) {
-                    door.open();
-                    message = "You opened the Door";
-                } else {
-                    message = "You don't have the Key";
-                }
-            }
-        }
+        String message = doorService.doorInstance(roomSide, player);
 
         req.setAttribute("sessionPlayer", player);
-
         String roomJson = gameUtils.getJsonInfo(room, player, message);
         req.setAttribute("currentRoom", roomJson);
 

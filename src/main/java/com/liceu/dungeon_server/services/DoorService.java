@@ -1,11 +1,9 @@
 package com.liceu.dungeon_server.services;
 
-import com.liceu.dungeon_server.model.Door;
-import com.liceu.dungeon_server.model.Key;
-import com.liceu.dungeon_server.model.Player;
-import com.liceu.dungeon_server.model.Room;
+import com.liceu.dungeon_server.model.*;
 
 public class DoorService {
+    KeyService keyService = new KeyService();
     public Door createDoor(Room roomFrom, Room roomTo, boolean open) {
         Door door = new Door();
         door.setRoomFrom(roomFrom);
@@ -14,15 +12,6 @@ public class DoorService {
         return door;
     }
 
-    public Door createDoor(Room roomFrom, Room roomTo, Key key) {
-        Door door = new Door();
-        door.setRoomFrom(roomFrom);
-        door.setRoomTo(roomTo);
-        key.setDoor(door);
-        return door;
-    }
-
-    public void open(Door door) { door.open(); }
 
     public String enter(Player player, Door door) {
         String message = "";
@@ -42,5 +31,23 @@ public class DoorService {
             return door.getRoomTo();
         }
         return door.getRoomFrom();
+    }
+
+    public String doorInstance(RoomSide roomSide, Player player) {
+        String message = "";
+        if(roomSide instanceof Door) {
+            Door door = (Door) roomSide;
+            if(door.isOpen()) {
+                message = "There is a Corridor";
+            } else {
+                if(keyService.getDoorKey(door, player.getInventory())) {
+                    door.open();
+                    message = "You opened the Door";
+                } else {
+                    message = "You don't have the Key";
+                }
+            }
+        }
+        return message;
     }
 }
