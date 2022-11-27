@@ -46,24 +46,18 @@ public class NavController extends HttpServlet {
             req.setAttribute("currentRoom", roomJson);
         }
 
-        if(room.isExit()) {
-            long startTime = (long)session.getAttribute("startTime");
-            Date date = new Date();
-            long endTime = date.getTime();
-            long totalTime = endTime - startTime;
+        long startTime = (long)session.getAttribute("startTime");
+        long totalTime = gameUtils.endGame(room, player, startTime);
+
+        if(totalTime > 0) {
 
             session.setAttribute("totalTime", totalTime);
-
-
             message = "You win!!";
             req.setAttribute("message", message);
-            player.setWinner(true);
             req.setAttribute("sessionPlayer", player);
             roomJson = gameUtils.getJsonInfo(room, player, message);
             req.setAttribute("currentRoom", roomJson);
 
-            RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
-            dispatcher.forward(req, resp);
         }
 
 

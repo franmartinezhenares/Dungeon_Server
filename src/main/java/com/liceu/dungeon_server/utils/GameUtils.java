@@ -5,6 +5,7 @@ import com.liceu.dungeon_server.services.KeyService;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -109,6 +110,17 @@ public class GameUtils {
         Room room = player.getCurrentRoom();
         RoomSide roomSide = room.getDirection(direction);
         return roomSide.enter(player);
+    }
+
+    public long endGame(Room room, Player player, long startTime) {
+        if (room.isExit()) {
+            Date date = new Date();
+            long endTime = date.getTime();
+            long totalTime = endTime - startTime;
+            player.setWinner(true);
+            return totalTime;
+        }
+        return 0;
     }
 
     public String getJsonInfo(Room room, Player player, String message) {
