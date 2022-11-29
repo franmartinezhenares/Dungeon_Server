@@ -11,6 +11,9 @@
 <body>
 
     <h1 class="h1_header">Winners List</h1>
+    <form method="get" action="/start">
+        <input id="restart_button" type="submit" name="play" value="Return to Maze Select">
+    </form>
 
     <div class="winners_list">
         <table class="winners_table">

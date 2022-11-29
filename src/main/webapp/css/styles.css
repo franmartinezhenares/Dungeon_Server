@@ -110,8 +110,9 @@ body {
 }
 
 .winners_list {
+    position: absolute;
+    top: 300px;
     width: 90%;
-    /* background-color: rgb(40, 30, 17, 0.7); */
     display: flex;
     justify-content: center;
 }
@@ -126,4 +127,12 @@ body {
 .error_message {
     background-color: rgb(40, 30, 17, 0.7);
     color: whitesmoke;
+}
+
+#restart_button {
+    padding: 0 0.5rem;
+    font-weight: bold;
+    position: absolute;
+    top: 220px;
+    margin-left: -265px;
 }
