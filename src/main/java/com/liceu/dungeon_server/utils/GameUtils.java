@@ -50,7 +50,7 @@ public class GameUtils {
 
             case 2:
                 builderUtils.setMazeID(2);
-                builderUtils.setMazeName("Pere\'s Maze");
+                builderUtils.setMazeName("Peres Maze");
 
                 for (int i = 1; i <= 6 ; i++) {
                     builderUtils.buildRoom(i);
@@ -67,6 +67,7 @@ public class GameUtils {
                 builderUtils.putCoinInRoom(6);
 
                 builderUtils.setExit(3);
+                break;
 
             case 3:
                 builderUtils.setMazeID(3);
@@ -99,6 +100,7 @@ public class GameUtils {
                 builderUtils.putCoinInRoom(12);
 
                 builderUtils.setExit(11);
+                break;
         }
 
 

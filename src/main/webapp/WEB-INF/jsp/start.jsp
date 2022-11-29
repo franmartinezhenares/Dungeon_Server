@@ -16,7 +16,7 @@
     <div class="start_form_container">
         <form method="post" action="/start">
             Select Maze:
-            <select name="maze_select" id="maze_select">
+            <select name="selected_maze" id="maze_select">
                 <option value=1>Tutorial Maze</option>
                 <option value=2>Peres Maze</option>
                 <option value=3>Mad Fran Maze</option>

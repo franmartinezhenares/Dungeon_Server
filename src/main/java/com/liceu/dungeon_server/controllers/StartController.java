@@ -25,7 +25,7 @@ public class StartController extends HttpServlet {
 
         // Inicio del juego, bienvenida, formulario de inicio (selección de mapa)
 
-        String selectedMaze = req.getParameter("maze_select");
+        String selectedMaze = req.getParameter("selected_maze");
 
         System.out.println("Selected: " + selectedMaze);
 
@@ -39,7 +39,7 @@ public class StartController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         HttpSession session = req.getSession();
-        int mazeID = Integer.parseInt(req.getParameter("maze_select"));
+        int mazeID = Integer.parseInt(req.getParameter("selected_maze"));
 
         Maze maze =gameUtils.createMaze(mazeID);
         Player player = playerService.createPlayer(maze.getRoomFromID(1));
