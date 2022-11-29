@@ -13,24 +13,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Date;
 
 @WebServlet("/nav")
 public class NavController extends HttpServlet {
     GameUtils gameUtils = new GameUtils();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         String dir = req.getParameter("dir");
-
         HttpSession session = req.getSession();
-
         Player player = (Player) session.getAttribute("sessionPlayer");
-
         Room room = player.getCurrentRoom();
 
-        String message = "";
-
-        message = (String)session.getAttribute("message");
+        String message = (String)session.getAttribute("message");
         if(message == null) message = "";
 
         String roomJson = gameUtils.getJsonInfo(room, player,message);
@@ -59,7 +54,6 @@ public class NavController extends HttpServlet {
             req.setAttribute("currentRoom", roomJson);
 
         }
-
 
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/jsp/nav.jsp");
         dispatcher.forward(req, resp);

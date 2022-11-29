@@ -12,7 +12,6 @@ public class DoorService {
         return door;
     }
 
-
     public String enter(Player player, Door door) {
         String message = "";
         if (!door.isOpen()) {
