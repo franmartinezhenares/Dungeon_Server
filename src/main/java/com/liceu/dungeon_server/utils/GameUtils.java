@@ -17,7 +17,7 @@ public class GameUtils {
         BuilderUtils builderUtils = new BuilderUtils();
         Key bronzeKey = keyService.createKey("bronzeKey", 1);
         Key silverKey = keyService.createKey("silverKey", 2);
-        Key goldKey = keyService.createKey("goldKey", 2);
+        Key goldKey = keyService.createKey("goldKey", 3);
 
         switch (mazeID) {
             case 1:
@@ -25,7 +25,7 @@ public class GameUtils {
                 builderUtils.setMazeID(1);
                 builderUtils.setMazeName("Tutorial Maze");
 
-                for (int i = 1; i <= 6 ; i++) {
+                for (int i = 1; i <= 7 ; i++) {
                     builderUtils.buildRoom(i);
                 }
 
@@ -33,18 +33,20 @@ public class GameUtils {
                 builderUtils.buildDoor(2, 3, Maze.Directions.WEST, bronzeKey);
                 builderUtils.buildCorridor(3, 4, Maze.Directions.WEST);
                 builderUtils.buildDoor(4, 5, Maze.Directions.WEST, silverKey);
-                builderUtils.buildDoor(5, 6, Maze.Directions.WEST, goldKey);
+                builderUtils.buildCorridor(5, 6, Maze.Directions.WEST);
+                builderUtils.buildDoor(6, 7, Maze.Directions.WEST, goldKey);
 
                 builderUtils.putKeyInRoom(2, bronzeKey);
                 builderUtils.putKeyInRoom(4, silverKey);
-                builderUtils.putKeyInRoom(5, goldKey);
+                builderUtils.putKeyInRoom(6, goldKey);
                 builderUtils.putCoinInRoom(1);
                 builderUtils.putCoinInRoom(2);
                 builderUtils.putCoinInRoom(3);
                 builderUtils.putCoinInRoom(4);
                 builderUtils.putCoinInRoom(5);
+                builderUtils.putCoinInRoom(6);
 
-                builderUtils.setExit(6);
+                builderUtils.setExit(7);
 
                 break;
 
@@ -78,16 +80,16 @@ public class GameUtils {
                 }
                 builderUtils.buildCorridor(1, 2, Maze.Directions.EAST);
                 builderUtils.buildCorridor(2, 3, Maze.Directions.EAST);
+                builderUtils.putKeyInRoom(3, bronzeKey);
                 builderUtils.buildCorridor(3, 6, Maze.Directions.SOUTH);
                 builderUtils.buildCorridor(6, 7, Maze.Directions.EAST);
                 builderUtils.buildCorridor(7, 4, Maze.Directions.NORTH);
-                builderUtils.buildCorridor(7, 10, Maze.Directions.EAST);
-                builderUtils.putKeyInRoom(3, bronzeKey);
+                builderUtils.buildCorridor(7, 10, Maze.Directions.SOUTH);
                 builderUtils.buildDoor(1, 5, Maze.Directions.SOUTH, bronzeKey);
                 builderUtils.buildCorridor(5, 8, Maze.Directions.SOUTH);
                 builderUtils.buildCorridor(8, 9, Maze.Directions.EAST);
                 builderUtils.putKeyInRoom(7, silverKey);
-                builderUtils.buildDoor(10, 14, Maze.Directions.EAST, silverKey);
+                builderUtils.buildDoor(10, 14, Maze.Directions.SOUTH, silverKey);
                 builderUtils.buildCorridor(14, 13, Maze.Directions.WEST);
                 builderUtils.buildCorridor(13, 12, Maze.Directions.WEST);
                 builderUtils.putKeyInRoom(14, goldKey);
